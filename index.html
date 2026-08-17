@@ -197,7 +197,25 @@ let currentWeapon="M416";
 function openWeapon(weapon){
 
 currentWeapon=weapon;
+if(currentWeapon=="M416"){
+document.getElementById("camera").value=80;
+document.getElementById("ads").value=75;
+document.getElementById("gyro").value=90;
+document.getElementById("scope2").value=65;
+document.getElementById("scope4").value=45;
+}
 
+if(currentWeapon=="AKM"){
+document.getElementById("camera").value=70;
+document.getElementById("ads").value=65;
+document.getElementById("gyro").value=85;
+document.getElementById("scope2").value=55;
+document.getElementById("scope4").value=40;
+}document.getElementById("cameraValue").innerText=document.getElementById("camera").value;
+document.getElementById("adsValue").innerText=document.getElementById("ads").value;
+document.getElementById("gyroValue").innerText=document.getElementById("gyro").value;
+document.getElementById("scope2Value").innerText=document.getElementById("scope2").value;
+document.getElementById("scope4Value").innerText=document.getElementById("scope4").value;
 document.getElementById("home").classList.add("hidden");
 document.getElementById("settings").classList.remove("hidden");
 
