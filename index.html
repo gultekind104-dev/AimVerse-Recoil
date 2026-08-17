@@ -426,6 +426,7 @@ weapon.style.display=name.includes(input)?"block":"none";
 <input type="range" value="90">
 </div>
 <div id="weaponList">
+
 <h2>🎯 AimVerse Recoil</h2>
 
 <button onclick="showGun('AKM')">AKM</button>
@@ -436,7 +437,81 @@ weapon.style.display=name.includes(input)?"block":"none";
 Silah seç
 </div>
 
-</div><script>
+</div>
+
+<style>
+#weaponList{
+background:#111;
+padding:15px;
+border-radius:15px;
+text-align:center;
+margin-top:20px;
+<style>
+#weaponList{
+background:#111;
+padding:15px;
+border-radius:15px;
+text-align:center;
+margin-top:20px;
+}
+
+#weaponList button{
+background:#ff9800;
+color:white;
+border:none;
+padding:12px 20px;
+margin:5px;
+border-radius:10px;
+font-weight:bold;
+}
+
+#gunResult{
+background:#222;
+color:#00ff99;
+padding:15px;
+margin-top:15px;
+border-radius:12px;
+font-size:18px;
+}
+</style>
+#gunResult{
+background:#222;
+color:#00ff99;
+padding:15px;
+margin-top:15px;
+border-radius:12px;
+font-size:18px;
+}
+</style>
+}
+</style>
+#weaponList{
+background:#111;
+padding:15px;
+border-radius:15px;
+text-align:center;
+margin-top:20px;
+}
+
+#weaponList button{
+background:#ff9800;
+color:white;
+border:none;
+padding:12px 20px;
+margin:5px;
+border-radius:10px;
+font-weight:bold;
+}
+
+#gunResult{
+background:#222;
+color:#00ff99;
+padding:15px;
+margin-top:15px;
+border-radius:12px;
+font-size:18px;
+}
+</style>
 function showGun(gun){
 let sonuc=document.getElementById("gunResult");
 
