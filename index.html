@@ -1,272 +1,166 @@
-```html
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AimVerse Recoil</title>
+  <title>AimVerse Recoil | PUBG Mobile Recoil & Sensitivity</title>
+  <meta name="description" content="AimVerse Recoil ile PUBG Mobile silah, hassasiyet ve recoil ayarlarını keşfet.">
+  <meta name="theme-color" content="#0b0f19">
 
-  <meta name="theme-color" content="#080b10">
-  <meta name="description" content="AimVerse Recoil - PUBG Mobile hassasiyet ayar yardımcısı">
-
-  <link rel="manifest" href="Manifest.json">
-
-  <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5486823792153354"
-    crossorigin="anonymous">
-  </script>
+  <link rel="manifest" href="manifest.json">
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
 
     body {
-      background: #080b10;
-      color: #ffffff;
+      font-family: Arial, sans-serif;
+      background: #0b0f19;
+      color: #fff;
       min-height: 100vh;
     }
 
     header {
-      padding: 24px 20px;
-      background: linear-gradient(135deg, #151b25, #080b10);
-      border-bottom: 1px solid #252d3a;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #1f2937;
+      background: #0f172a;
     }
 
     .logo {
-      font-size: 27px;
-      font-weight: 900;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
 
     .logo span {
-      color: #f5b400;
+      color: #00e5ff;
     }
 
-    .subtitle {
-      color: #8d97a6;
-      font-size: 13px;
-      margin-top: 6px;
-    }
-
-    .container {
-      max-width: 650px;
+    .hero {
+      padding: 55px 20px;
+      text-align: center;
+      max-width: 900px;
       margin: auto;
-      padding: 20px;
     }
 
-    .welcome,
-    .panel {
-      background: #111722;
-      border: 1px solid #252e3b;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-
-    .welcome h2 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .welcome p {
-      color: #9099a8;
-      font-size: 14px;
-    }
-
-    .search {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid #293241;
-      background: #111722;
-      color: white;
-      outline: none;
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-
-    .search:focus {
-      border-color: #f5b400;
-      box-shadow: 0 0 0 2px rgba(245,180,0,.12);
-    }
-
-    .section-title {
-      font-size: 20px;
+    .hero h1 {
+      font-size: 42px;
       margin-bottom: 15px;
     }
 
-    .weapons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .hero h1 span {
+      color: #00e5ff;
     }
 
-    .weapon {
-      background: linear-gradient(145deg, #151c28, #0d121a);
-      border: 1px solid #293444;
-      border-radius: 16px;
-      padding: 17px;
-      cursor: pointer;
+    .hero p {
+      color: #aab4c3;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
       transition: .2s;
     }
 
-    .weapon:hover {
-      transform: translateY(-3px);
-      border-color: #f5b400;
-      box-shadow: 0 8px 20px rgba(245,180,0,.08);
+    .primary {
+      background: #00e5ff;
+      color: #061018;
     }
 
-    .weapon:active {
-      transform: scale(.98);
+    .secondary {
+      border: 1px solid #334155;
+      color: #fff;
+      background: #111827;
     }
 
-    .weapon-icon {
-      font-size: 28px;
-      margin-bottom: 8px;
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    .weapon-name {
-      font-size: 17px;
-      font-weight: 800;
+    .features {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .weapon-type {
-      color: #8993a3;
-      font-size: 12px;
-      margin-top: 5px;
+    .card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 25px;
     }
 
-    .hidden {
-      display: none !important;
+    .card .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
     }
 
-    .back {
-      background: #252d3a;
-      color: white;
-      border: 0;
-      padding: 11px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 18px;
-      font-weight: bold;
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
-    .back:hover {
-      background: #303947;
+    .card p {
+      color: #94a3b8;
+      line-height: 1.5;
     }
 
-    .selected {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .info {
-      color: #929cab;
-      font-size: 13px;
-      margin-bottom: 25px;
-    }
-
-    .setting {
-      margin-bottom: 22px;
-    }
-
-    .setting-top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 9px;
-    }
-
-    .setting-top span:last-child {
-      color: #f5b400;
-      font-weight: bold;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      accent-color: #f5b400;
-      cursor: pointer;
-    }
-
-    .save {
-      width: 100%;
-      padding: 15px;
-      border: 0;
-      border-radius: 12px;
-      background: #f5b400;
-      color: #111;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .save:hover {
-      filter: brightness(1.08);
-    }
-
-    .reset {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #303947;
-      border-radius: 12px;
-      background: #171e28;
-      color: white;
-      font-weight: bold;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    .reset:hover {
-      background: #202936;
-    }
-
-    .saved-message {
+    .cta {
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 35px 20px;
       text-align: center;
-      color: #4ade80;
-      font-size: 13px;
-      margin-top: 12px;
-      min-height: 18px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 20px;
     }
 
-    .footer {
+    .cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    footer {
       text-align: center;
-      color: #687384;
-      font-size: 12px;
-      padding: 30px 0;
+      padding: 30px 20px;
+      margin-top: 30px;
+      color: #64748b;
+      border-top: 1px solid #1f2937;
     }
 
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      color: #8993a3;
-      padding: 30px;
-      background: #111722;
-      border: 1px solid #252e3b;
-      border-radius: 15px;
-    }
-
-    @media (max-width: 420px) {
-      .weapons {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 32px;
       }
 
-      .weapon {
-        padding: 14px;
-      }
-
-      .weapon-name {
-        font-size: 15px;
-      }
-
-      .selected {
-        font-size: 22px;
+      .features {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -275,790 +169,72 @@
 <body>
 
   <header>
-    <div class="logo">
-      AIM<span>VERSE</span> RECOIL
-    </div>
-
-    <div class="subtitle">
-      PUBG Mobile hassasiyet yardımcın 🎯
-    </div>
+    <div class="logo">AimVerse<span>Recoil</span></div>
   </header>
 
+  <main>
 
-  <main class="container">
+    <section class="hero">
+      <h1>PUBG Mobile <span>Recoil</span> Ayarları</h1>
 
-    <!-- ANA SAYFA -->
-    <section id="home">
+      <p>
+        AimVerse Recoil ile silahlarını daha iyi kontrol et.
+        Hassasiyet ve recoil ayarlarını keşfet, aim performansını geliştir.
+      </p>
 
-      <div class="welcome">
-        <h2>Hoş Geldin Kanka 🔥</h2>
+      <div class="buttons">
+        <a href="silahlar.html" class="btn primary">🔫 Silah Ayarları</a>
+        <a href="#features" class="btn secondary">🎯 Özellikler</a>
+      </div>
+    </section>
 
+    <section class="features" id="features">
+
+      <div class="card">
+        <div class="icon">🔫</div>
+        <h2>Silah Ayarları</h2>
         <p>
-          Silahını seç ve kendi hassasiyet ayarlarını oluştur.
+          PUBG Mobile silahları için özel recoil ve hassasiyet ayarlarını
+          kolayca incele.
         </p>
       </div>
 
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h2>Hassasiyet</h2>
+        <p>
+          Daha kontrollü spray ve daha iyi aim için uygun hassasiyet
+          değerlerini keşfet.
+        </p>
+      </div>
 
-      <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="🔍 Silah ara..."
-        oninput="searchWeapon()"
-      >
-
-
-      <h2 class="section-title">
-        🔫 Silahlar
-      </h2>
-
-
-      <div class="weapons" id="weaponList">
-
-        <div class="weapon"
-             data-name="M416"
-             onclick="openWeapon('M416')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">M416</div>
-          <div class="weapon-type">AR • Dengeli</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="AKM"
-             onclick="openWeapon('AKM')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">AKM</div>
-          <div class="weapon-type">AR • Yüksek Hasar</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="SCAR-L"
-             onclick="openWeapon('SCAR-L')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">SCAR-L</div>
-          <div class="weapon-type">AR • Kontrol Kolay</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="AUG"
-             onclick="openWeapon('AUG')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">AUG</div>
-          <div class="weapon-type">AR • Dengeli</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="GROZA"
-             onclick="openWeapon('GROZA')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">GROZA</div>
-          <div class="weapon-type">AR • Çok Yüksek Hasar</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="UMP45"
-             onclick="openWeapon('UMP45')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">UMP45</div>
-          <div class="weapon-type">SMG • Kolay Kontrol</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="Beryl M762"
-             onclick="openWeapon('Beryl M762')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">Beryl M762</div>
-          <div class="weapon-type">AR • Yüksek Hasar</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="DP-28"
-             onclick="openWeapon('DP-28')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">DP-28</div>
-          <div class="weapon-type">LMG • Stabil</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="AK12"
-             onclick="openWeapon('AK12')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">AK12</div>
-          <div class="weapon-type">AR • Dengeli</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="ACE32"
-             onclick="openWeapon('ACE32')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">ACE32</div>
-          <div class="weapon-type">AR • Güçlü</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="Vector"
-             onclick="openWeapon('Vector')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">Vector</div>
-          <div class="weapon-type">SMG • Hızlı</div>
-        </div>
-
-
-        <div class="weapon"
-             data-name="MG3"
-             onclick="openWeapon('MG3')">
-          <div class="weapon-icon">🔫</div>
-          <div class="weapon-name">MG3</div>
-          <div class="weapon-type">LMG • Yüksek Atış</div>
-        </div>
-
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h2>Hızlı Kullanım</h2>
+        <p>
+          Telefonundan hızlıca aç, ayarları incele ve oyuna geç.
+        </p>
       </div>
 
     </section>
 
+    <section class="cta">
+      <h2>🎮 AimVerse Recoil'e Hoş Geldin</h2>
+      <p>
+        Daha iyi aim, daha kontrollü recoil ve daha profesyonel gameplay.
+      </p>
 
-    <!-- AYAR SAYFASI -->
-    <section id="settings" class="hidden">
-
-      <button class="back" onclick="goHome()">
-        ← Silahlara Dön
-      </button>
-
-
-      <div class="panel">
-
-        <div class="selected" id="selectedWeapon">
-          M416
-        </div>
-
-        <div class="info">
-          Bu değerleri kendi oyun stiline göre ayarlayabilirsin.
-        </div>
-
-
-        <!-- Kamera -->
-        <div class="setting">
-
-          <div class="setting-top">
-            <span>📷 Kamera Hassasiyeti</span>
-            <span id="cameraValue">80</span>
-          </div>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="80"
-            id="camera"
-            oninput="updateValue('camera')"
-          >
-
-        </div>
-
-
-        <!-- ADS -->
-        <div class="setting">
-
-          <div class="setting-top">
-            <span>🎯 ADS Hassasiyeti</span>
-            <span id="adsValue">75</span>
-          </div>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="75"
-            id="ads"
-            oninput="updateValue('ads')"
-          >
-
-        </div>
-
-
-        <!-- Jiroskop -->
-        <div class="setting">
-
-          <div class="setting-top">
-            <span>📱 Jiroskop</span>
-            <span id="gyroValue">90</span>
-          </div>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="90"
-            id="gyro"
-            oninput="updateValue('gyro')"
-          >
-
-        </div>
-
-
-        <!-- 2x -->
-        <div class="setting">
-
-          <div class="setting-top">
-            <span>🔭 2x Dürbün</span>
-            <span id="scope2Value">65</span>
-          </div>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="65"
-            id="scope2"
-            oninput="updateValue('scope2')"
-          >
-
-        </div>
-
-
-        <!-- 4x -->
-        <div class="setting">
-
-          <div class="setting-top">
-            <span>🔭 4x Dürbün</span>
-            <span id="scope4Value">45</span>
-          </div>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="45"
-            id="scope4"
-            oninput="updateValue('scope4')"
-          >
-
-        </div>
-
-
-        <button class="save" onclick="saveSettings()">
-          💾 Ayarları Kaydet
-        </button>
-
-
-        <button class="reset" onclick="resetSettings()">
-          ↻ Varsayılana Dön
-        </button>
-
-
-        <div
-          id="savedMessage"
-          class="saved-message">
-        </div>
-
-      </div>
-
+      <a href="silahlar.html" class="btn primary">
+        Silahları Gör →
+      </a>
     </section>
-
-
-    <div class="footer">
-      AimVerse Recoil © 2026
-    </div>
 
   </main>
 
-
-  <script>
-
-    /*
-      ==========================================
-      AIMVERSE RECOIL
-      SILAH AYARLARI
-      ==========================================
-    */
-
-
-    let currentWeapon = "M416";
-
-
-    /*
-      HER SİLAH İÇİN VARSAYILAN AYARLAR
-    */
-
-    const defaultSettings = {
-
-      "M416": {
-        camera: 80,
-        ads: 75,
-        gyro: 90,
-        scope2: 65,
-        scope4: 45
-      },
-
-      "AKM": {
-        camera: 70,
-        ads: 65,
-        gyro: 85,
-        scope2: 55,
-        scope4: 40
-      },
-
-      "SCAR-L": {
-        camera: 82,
-        ads: 77,
-        gyro: 92,
-        scope2: 68,
-        scope4: 48
-      },
-
-      "AUG": {
-        camera: 80,
-        ads: 76,
-        gyro: 90,
-        scope2: 65,
-        scope4: 46
-      },
-
-      "GROZA": {
-        camera: 68,
-        ads: 63,
-        gyro: 84,
-        scope2: 53,
-        scope4: 38
-      },
-
-      "UMP45": {
-        camera: 85,
-        ads: 80,
-        gyro: 95,
-        scope2: 70,
-        scope4: 50
-      },
-
-      "Beryl M762": {
-        camera: 67,
-        ads: 62,
-        gyro: 82,
-        scope2: 52,
-        scope4: 37
-      },
-
-      "DP-28": {
-        camera: 72,
-        ads: 68,
-        gyro: 86,
-        scope2: 58,
-        scope4: 42
-      },
-
-      "AK12": {
-        camera: 78,
-        ads: 73,
-        gyro: 89,
-        scope2: 63,
-        scope4: 44
-      },
-
-      "ACE32": {
-        camera: 74,
-        ads: 69,
-        gyro: 86,
-        scope2: 58,
-        scope4: 41
-      },
-
-      "Vector": {
-        camera: 88,
-        ads: 83,
-        gyro: 96,
-        scope2: 73,
-        scope4: 52
-      },
-
-      "MG3": {
-        camera: 70,
-        ads: 66,
-        gyro: 84,
-        scope2: 56,
-        scope4: 40
-      }
-
-    };
-
-
-    /*
-      SİLAH AÇ
-    */
-
-    function openWeapon(weapon) {
-
-      currentWeapon = weapon;
-
-      document.getElementById("home")
-        .classList.add("hidden");
-
-      document.getElementById("settings")
-        .classList.remove("hidden");
-
-      document.getElementById("selectedWeapon")
-        .innerText = weapon;
-
-      loadSettings();
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-
-    /*
-      ANA SAYFAYA DÖN
-    */
-
-    function goHome() {
-
-      document.getElementById("settings")
-        .classList.add("hidden");
-
-      document.getElementById("home")
-        .classList.remove("hidden");
-
-      document.getElementById("savedMessage")
-        .innerText = "";
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-
-    /*
-      SLIDER DEĞERİNİ GÜNCELLE
-    */
-
-    function updateValue(id) {
-
-      const input =
-        document.getElementById(id);
-
-      const output =
-        document.getElementById(id + "Value");
-
-      output.innerText = input.value;
-    }
-
-
-    /*
-      TÜM AYARLARI EKRANA YÜKLE
-    */
-
-    function applySettings(settings) {
-
-      document.getElementById("camera").value =
-        settings.camera;
-
-      document.getElementById("ads").value =
-        settings.ads;
-
-      document.getElementById("gyro").value =
-        settings.gyro;
-
-      document.getElementById("scope2").value =
-        settings.scope2;
-
-      document.getElementById("scope4").value =
-        settings.scope4;
-
-
-      updateValue("camera");
-      updateValue("ads");
-      updateValue("gyro");
-      updateValue("scope2");
-      updateValue("scope4");
-    }
-
-
-    /*
-      AYARLARI YÜKLE
-    */
-
-    function loadSettings() {
-
-      const saved =
-        localStorage.getItem(
-          "aimverse_" + currentWeapon
-        );
-
-
-      if (saved) {
-
-        try {
-
-          const settings =
-            JSON.parse(saved);
-
-          applySettings(settings);
-
-          return;
-
-        } catch (error) {
-
-          console.log(
-            "Kayıt okunamadı:",
-            error
-          );
-        }
-      }
-
-
-      /*
-        KAYIT YOKSA VARSAYILANI KULLAN
-      */
-
-      const defaults =
-        defaultSettings[currentWeapon];
-
-      if (defaults) {
-
-        applySettings(defaults);
-
-      } else {
-
-        applySettings(
-          defaultSettings["M416"]
-        );
-      }
-    }
-
-
-    /*
-      AYARLARI KAYDET
-    */
-
-    function saveSettings() {
-
-      const settings = {
-
-        camera:
-          document.getElementById("camera").value,
-
-        ads:
-          document.getElementById("ads").value,
-
-        gyro:
-          document.getElementById("gyro").value,
-
-        scope2:
-          document.getElementById("scope2").value,
-
-        scope4:
-          document.getElementById("scope4").value
-      };
-
-
-      localStorage.setItem(
-
-        "aimverse_" + currentWeapon,
-
-        JSON.stringify(settings)
-
-      );
-
-
-      const message =
-        document.getElementById("savedMessage");
-
-
-      message.innerText =
-        "✅ " + currentWeapon +
-        " ayarları kaydedildi!";
-
-
-      setTimeout(function() {
-
-        message.innerText = "";
-
-      }, 2500);
-    }
-
-
-    /*
-      VARSAYILANA DÖN
-    */
-
-    function resetSettings() {
-
-      const defaults =
-        defaultSettings[currentWeapon];
-
-
-      if (!defaults) return;
-
-
-      applySettings(defaults);
-
-
-      /*
-        KULLANICININ KAYDINI DA SİL
-      */
-
-      localStorage.removeItem(
-        "aimverse_" + currentWeapon
-      );
-
-
-      const message =
-        document.getElementById("savedMessage");
-
-
-      message.innerText =
-        "↻ Varsayılan ayarlara dönüldü";
-
-
-      setTimeout(function() {
-
-        message.innerText = "";
-
-      }, 2500);
-    }
-
-
-    /*
-      SİLAH ARAMA
-    */
-
-    function searchWeapon() {
-
-      const input =
-        document
-          .getElementById("search")
-          .value
-          .toUpperCase()
-          .trim();
-
-
-      const weapons =
-        document.querySelectorAll(
-          ".weapon"
-        );
-
-
-      let found = false;
-
-
-      weapons.forEach(function(weapon) {
-
-        const name =
-          weapon
-            .getAttribute("data-name")
-            .toUpperCase();
-
-
-        if (name.includes(input)) {
-
-          weapon.style.display = "";
-
-          found = true;
-
-        } else {
-
-          weapon.style.display = "none";
-        }
-
-      });
-
-
-      /*
-        SONUÇ YOKSA MESAJ
-      */
-
-      let empty =
-        document.getElementById("emptyMessage");
-
-
-      if (!empty) {
-
-        empty =
-          document.createElement("div");
-
-        empty.id =
-          "emptyMessage";
-
-        empty.className =
-          "empty";
-
-        empty.innerText =
-          "🔍 Silah bulunamadı.";
-
-        document
-          .getElementById("weaponList")
-          .appendChild(empty);
-      }
-
-
-      empty.style.display =
-        found ? "none" : "block";
-    }
-
-
-    /*
-      SAYFA AÇILDIĞINDA
-    */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
-
-        loadSettings();
-
-      }
-    );
-
-
-    /*
-      SERVICE WORKER
-    */
-
-    if ("serviceWorker" in navigator) {
-
-      window.addEventListener(
-        "load",
-        function() {
-
-          navigator.serviceWorker
-            .register("./service-worker.js")
-            .then(function() {
-
-              console.log(
-                "AimVerse Service Worker aktif."
-              );
-
-            })
-            .catch(function(error) {
-
-              console.log(
-                "Service Worker hatası:",
-                error
-              );
-
-            });
-
-        }
-      );
-    }
-
-  </script>
+  <footer>
+    © 2026 AimVerse Recoil — PUBG Mobile yardımcı araçları
+  </footer>
 
 </body>
 </html>
-```
-
-
 
