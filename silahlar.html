@@ -1,334 +1,527 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Silah Ayarları | AimVerse Recoil</title>
-  <meta name="description" content="PUBG Mobile silah recoil ve hassasiyet ayarları.">
+<title>Silah Ayarları | AimVerse Recoil</title>
+<meta name="description" content="PUBG Mobile silah recoil ve hassasiyet ayarları.">
+<meta name="theme-color" content="#080d17">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: #fff;
-      min-height: 100vh;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(circle at top, #102033 0%, #080d17 45%, #050811 100%);
+  color: #fff;
+  min-height: 100vh;
+}
 
-    header {
-      background: #0f172a;
-      border-bottom: 1px solid #1f2937;
-      padding: 18px 20px;
-      text-align: center;
-    }
+/* HEADER */
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-    }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8, 13, 23, .92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1e293b;
+  padding: 18px 20px;
+  text-align: center;
+}
 
-    .logo span {
-      color: #00e5ff;
-    }
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 18px;
-    }
+.logo span {
+  color: #00e5ff;
+  text-shadow: 0 0 15px rgba(0,229,255,.5);
+}
 
-    .top {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+/* CONTAINER */
 
-    .top h1 {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
+.container {
+  max-width: 1150px;
+  margin: auto;
+  padding: 35px 18px;
+}
 
-    .top p {
-      color: #94a3b8;
-      line-height: 1.5;
-    }
+/* TOP */
 
-    .search {
-      width: 100%;
-      max-width: 600px;
-      display: block;
-      margin: 25px auto;
-      padding: 15px 18px;
-      border-radius: 12px;
-      border: 1px solid #334155;
-      background: #111827;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
+.top {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .search:focus {
-      border-color: #00e5ff;
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
-    }
+.badge {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid rgba(0,229,255,.3);
+  background: rgba(0,229,255,.07);
+  color: #00e5ff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
 
-    .weapons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
+.top h1 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
 
-    .weapon {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 16px;
-      padding: 20px;
-      transition: .2s;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
+.top p {
+  color: #94a3b8;
+  line-height: 1.6;
+}
 
-    .weapon:hover {
-      transform: translateY(-3px);
-      border-color: #00e5ff;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.10);
-    }
+/* SEARCH */
 
-    .weapon:active {
-      transform: scale(.98);
-    }
+.search {
+  width: 100%;
+  max-width: 650px;
+  display: block;
+  margin: 25px auto;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid #334155;
+  background: rgba(17,24,39,.9);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: .2s;
+}
 
-    .weapon h2 {
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
+.search:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 25px rgba(0,229,255,.12);
+}
 
-    .type {
-      color: #00e5ff;
-      font-size: 13px;
-      margin-bottom: 18px;
-      font-weight: bold;
-    }
+/* WEAPONS */
 
-    .setting {
-      display: flex;
-      justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px solid #1f2937;
-      color: #cbd5e1;
-      font-size: 14px;
-    }
+.weapons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
 
-    .setting:last-child {
-      border-bottom: 0;
-    }
+.weapon {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #111827, #0c1320);
+  border: 1px solid #1f2937;
+  border-radius: 20px;
+  padding: 18px;
+  cursor: pointer;
+  transition: .25s;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .value {
-      color: #fff;
-      font-weight: bold;
-    }
+.weapon::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -50px;
+  top: -50px;
+  background: rgba(0,229,255,.08);
+  border-radius: 50%;
+}
 
-    .back {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      background: #00e5ff;
-      color: #061018;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.weapon:hover {
+  transform: translateY(-5px);
+  border-color: #00e5ff;
+  box-shadow: 0 12px 35px rgba(0,229,255,.12);
+}
 
-    .back:hover {
-      opacity: .9;
-    }
+.weapon:active {
+  transform: scale(.98);
+}
 
-    .empty {
-      display: none;
-      text-align: center;
-      color: #94a3b8;
-      padding: 30px;
-    }
+/* WEAPON IMAGE */
 
-    footer {
-      text-align: center;
-      color: #64748b;
-      padding: 30px 20px;
-      margin-top: 30px;
-      border-top: 1px solid #1f2937;
-    }
+.weapon-image {
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  background:
+    linear-gradient(135deg, rgba(0,229,255,.08), rgba(15,23,42,.8));
+  border: 1px solid #1e293b;
+  overflow: hidden;
+}
 
-    /* =========================
-       SİLAH DETAY PENCERESİ
-       ========================= */
+.weapon-image svg {
+  width: 90%;
+  height: 90%;
+  filter: drop-shadow(0 0 10px rgba(0,229,255,.2));
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.78);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      backdrop-filter: blur(5px);
-    }
+.weapon h2 {
+  font-size: 21px;
+  margin-bottom: 6px;
+}
 
-    .modal.active {
-      display: flex;
-    }
+.type {
+  color: #00e5ff;
+  font-size: 12px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: .7px;
+}
 
-    .modal-box {
-      width: 100%;
-      max-width: 540px;
-      max-height: 90vh;
-      overflow-y: auto;
-      background: #111827;
-      border: 1px solid #00e5ff;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow:
-        0 0 40px rgba(0, 229, 255, 0.20),
-        0 20px 60px rgba(0, 0, 0, 0.5);
-      animation: modalOpen .2s ease;
-    }
+/* SETTINGS */
 
-    @keyframes modalOpen {
-      from {
-        opacity: 0;
-        transform: scale(.92);
-      }
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #1f2937;
+  color: #cbd5e1;
+  font-size: 13px;
+}
 
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+.setting:last-child {
+  border-bottom: 0;
+}
 
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
+.value {
+  color: #fff;
+  font-weight: bold;
+}
 
-    .modal-header h2 {
-      font-size: 28px;
-    }
+/* RECOIL BAR */
 
-    .close-modal {
-      border: 0;
-      background: #1f2937;
-      color: white;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      font-size: 25px;
-      cursor: pointer;
-      transition: .2s;
-    }
+.recoil-box {
+  margin-top: 15px;
+}
 
-    .close-modal:hover {
-      background: #ef4444;
-    }
+.recoil-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 7px;
+}
 
-    .modal .type {
-      margin-bottom: 18px;
-    }
+.recoil-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 99px;
+  background: #1e293b;
+  overflow: hidden;
+}
 
-    .modal-settings {
-      background: #0b0f19;
-      border: 1px solid #1f2937;
-      border-radius: 14px;
-      padding: 12px 16px;
-    }
+.recoil-bar {
+  height: 100%;
+  border-radius: 99px;
+  box-shadow: 0 0 10px currentColor;
+}
 
-    .modal-settings .setting {
-      padding: 12px 0;
-    }
+.low {
+  width: 28%;
+  background: #22c55e;
+  color: #22c55e;
+}
 
-    .scope-title {
-      font-size: 20px;
-      margin-top: 24px;
-      margin-bottom: 12px;
-    }
+.medium {
+  width: 55%;
+  background: #facc15;
+  color: #facc15;
+}
 
-    .scope-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
+.high {
+  width: 82%;
+  background: #ef4444;
+  color: #ef4444;
+}
 
-    .scope {
-      background: #0b0f19;
-      border: 1px solid #1f2937;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-    }
+/* BUTTON */
 
-    .scope span {
-      display: block;
-      color: #94a3b8;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
+.open-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 11px;
+  border: 0;
+  border-radius: 11px;
+  background: #00e5ff;
+  color: #061018;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
 
-    .scope strong {
-      color: #00e5ff;
-      font-size: 21px;
-    }
+.open-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
 
-    .info-box {
-      margin-top: 20px;
-      padding: 14px;
-      background: rgba(0, 229, 255, 0.06);
-      border: 1px solid rgba(0, 229, 255, 0.18);
-      border-radius: 12px;
-      color: #94a3b8;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+/* EMPTY */
 
-    @media (max-width: 850px) {
-      .weapons {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.empty {
+  display: none;
+  text-align: center;
+  color: #94a3b8;
+  padding: 35px;
+}
 
-    @media (max-width: 500px) {
-      .top h1 {
-        font-size: 28px;
-      }
+/* BACK */
 
-      .weapons {
-        grid-template-columns: 1fr;
-      }
+.back {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 13px 20px;
+  border-radius: 11px;
+  background: #00e5ff;
+  color: #061018;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-      .modal {
-        padding: 12px;
-      }
+/* MODAL */
 
-      .modal-box {
-        padding: 20px;
-        max-height: 92vh;
-      }
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.82);
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  backdrop-filter: blur(8px);
+}
 
-      .modal-header h2 {
-        font-size: 24px;
-      }
+.modal.active {
+  display: flex;
+}
 
-      .scope-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-  </style>
+.modal-box {
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background:
+    linear-gradient(145deg, #111827, #080d17);
+  border: 1px solid #00e5ff;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow:
+    0 0 45px rgba(0,229,255,.2),
+    0 25px 80px rgba(0,0,0,.6);
+  animation: modalOpen .2s ease;
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+    transform: scale(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  font-size: 28px;
+}
+
+.close-modal {
+  border: 0;
+  background: #1f2937;
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  background: #ef4444;
+}
+
+/* MODAL IMAGE */
+
+.modal-image {
+  height: 150px;
+  margin-bottom: 18px;
+  border-radius: 15px;
+  background:
+    linear-gradient(135deg, rgba(0,229,255,.08), #0b1220);
+  border: 1px solid #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image svg {
+  width: 90%;
+  height: 90%;
+}
+
+/* MODAL SETTINGS */
+
+.modal-settings {
+  background: #0b0f19;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.modal-settings .setting {
+  padding: 12px 0;
+}
+
+/* SCOPE */
+
+.scope-title {
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.scope {
+  background: #0b0f19;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 15px 8px;
+  text-align: center;
+}
+
+.scope span {
+  display: block;
+  color: #94a3b8;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.scope strong {
+  color: #00e5ff;
+  font-size: 20px;
+}
+
+/* EQUIPMENT */
+
+.equipment-title {
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.equipment {
+  padding: 13px;
+  border-radius: 12px;
+  background: #0b0f19;
+  border: 1px solid #1f2937;
+}
+
+.equipment span {
+  display: block;
+  color: #94a3b8;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.equipment strong {
+  color: white;
+}
+
+/* INFO */
+
+.info-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,229,255,.06);
+  border: 1px solid rgba(0,229,255,.18);
+  border-radius: 13px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  color: #64748b;
+  padding: 30px 20px;
+  margin-top: 30px;
+  border-top: 1px solid #1f2937;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .weapons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+
+  .container {
+    padding: 25px 12px;
+  }
+
+  .top h1 {
+    font-size: 29px;
+  }
+
+  .weapons {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-box {
+    padding: 18px;
+  }
+
+  .modal-header h2 {
+    font-size: 24px;
+  }
+
+  .scope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
 </head>
 
 <body>
@@ -339,660 +532,1015 @@
 
 <main class="container">
 
-  <section class="top">
-    <h1>🔫 Silah Ayarları</h1>
+<section class="top">
 
-    <p>
-      PUBG Mobile silahları için recoil ve hassasiyet
-      değerlerini keşfet.
-    </p>
+  <div class="badge">🎯 PUBG MOBILE AIM SYSTEM</div>
 
-    <input
-      type="text"
-      id="search"
-      class="search"
-      placeholder="🔎 Silah ara..."
-      autocomplete="off">
-  </section>
+  <h1>🔫 Silah Ayarları</h1>
 
+  <p>
+    Silahını seç, recoil seviyesini incele ve önerilen
+    hassasiyet ayarlarını keşfet.
+  </p>
 
-  <!-- =========================
-       SİLAH KARTLARI
-       ========================= -->
+  <input
+    type="text"
+    id="search"
+    class="search"
+    placeholder="🔎 Silah ara..."
+    autocomplete="off">
 
-  <section class="weapons" id="weapons">
-
-    <!-- M416 -->
-    <div class="weapon">
-      <h2>M416</h2>
-      <div class="type">ASSAULT RIFLE</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">120%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">100%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">300%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">Low</span>
-      </div>
-    </div>
+</section>
 
 
-    <!-- AKM -->
-    <div class="weapon">
-      <h2>AKM</h2>
-      <div class="type">ASSAULT RIFLE</div>
+<section class="weapons" id="weapons">
 
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">115%</span>
-      </div>
+<!-- M416 -->
 
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">95%</span>
-      </div>
+<div class="weapon" data-name="M416">
 
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">300%</span>
-      </div>
+  <div class="weapon-image">
 
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">High</span>
-      </div>
-    </div>
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="80" y="75" width="300" height="28" rx="8"/>
+        <rect x="145" y="52" width="155" height="20" rx="5"/>
+        <rect x="325" y="67" width="90" height="18" rx="5"/>
+        <rect x="390" y="78" width="70" height="10" rx="4"/>
+        <rect x="115" y="103" width="35" height="48" rx="6"
+              transform="rotate(18 115 103)"/>
+        <rect x="255" y="102" width="45" height="55" rx="7"
+              transform="rotate(-15 255 102)"/>
+        <rect x="205" y="57" width="70" height="10" rx="3"/>
+        <circle cx="105" cy="88" r="16"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="170" y="75" width="100" height="5" rx="2"/>
+      </g>
+    </svg>
 
-
-    <!-- AUG -->
-    <div class="weapon">
-      <h2>AUG</h2>
-      <div class="type">ASSAULT RIFLE</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">120%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">100%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">300%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">Low</span>
-      </div>
-    </div>
-
-
-    <!-- GROZA -->
-    <div class="weapon">
-      <h2>Groza</h2>
-      <div class="type">ASSAULT RIFLE</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">115%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">95%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">300%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">High</span>
-      </div>
-    </div>
-
-
-    <!-- UMP45 -->
-    <div class="weapon">
-      <h2>UMP45</h2>
-      <div class="type">SMG</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">125%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">105%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">280%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">Low</span>
-      </div>
-    </div>
-
-
-    <!-- VECTOR -->
-    <div class="weapon">
-      <h2>Vector</h2>
-      <div class="type">SMG</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">125%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">105%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">280%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">Medium</span>
-      </div>
-    </div>
-
-
-    <!-- DP-28 -->
-    <div class="weapon">
-      <h2>DP-28</h2>
-      <div class="type">LMG</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">110%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">90%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">280%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">Medium</span>
-      </div>
-    </div>
-
-
-    <!-- M762 -->
-    <div class="weapon">
-      <h2>M762</h2>
-      <div class="type">ASSAULT RIFLE</div>
-
-      <div class="setting">
-        <span>Camera</span>
-        <span class="value">115%</span>
-      </div>
-
-      <div class="setting">
-        <span>ADS</span>
-        <span class="value">95%</span>
-      </div>
-
-      <div class="setting">
-        <span>Gyroscope</span>
-        <span class="value">300%</span>
-      </div>
-
-      <div class="setting">
-        <span>Recoil</span>
-        <span class="value">High</span>
-      </div>
-    </div>
-
-  </section>
-
-
-  <div class="empty" id="empty">
-    Silah bulunamadı.
   </div>
 
+  <h2>M416</h2>
+  <div class="type">ASSAULT RIFLE • 5.56mm</div>
 
-  <a href="index.html" class="back">
-    ← Ana Sayfaya Dön
-  </a>
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">120%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">100%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">300%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>LOW</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar low"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- AKM -->
+
+<div class="weapon" data-name="AKM">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#cbd5e1">
+        <rect x="70" y="78" width="310" height="27" rx="7"/>
+        <rect x="135" y="55" width="160" height="18" rx="5"/>
+        <rect x="350" y="70" width="85" height="18" rx="5"/>
+        <rect x="415" y="78" width="55" height="9" rx="4"/>
+        <rect x="125" y="103" width="40" height="60"
+              rx="7" transform="rotate(18 125 103)"/>
+        <rect x="260" y="100" width="45" height="62"
+              rx="7" transform="rotate(-17 260 100)"/>
+        <circle cx="90" cy="91" r="17"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="175" y="79" width="90" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>AKM</h2>
+  <div class="type">ASSAULT RIFLE • 7.62mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">115%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">95%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">300%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>HIGH</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar high"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- AUG -->
+
+<div class="weapon" data-name="AUG">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="75" y="76" width="315" height="29" rx="8"/>
+        <rect x="130" y="52" width="175" height="20" rx="5"/>
+        <rect x="350" y="68" width="90" height="18" rx="5"/>
+        <rect x="420" y="77" width="55" height="10" rx="4"/>
+        <rect x="130" y="103" width="42" height="58"
+              rx="7" transform="rotate(17 130 103)"/>
+        <rect x="265" y="102" width="43" height="55"
+              rx="7" transform="rotate(-12 265 102)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="165" y="78" width="115" height="5" rx="2"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>AUG</h2>
+  <div class="type">ASSAULT RIFLE • 5.56mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">120%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">100%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">300%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>LOW</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar low"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- GROZA -->
+
+<div class="weapon" data-name="Groza">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="75" y="76" width="310" height="29" rx="7"/>
+        <rect x="135" y="55" width="150" height="18" rx="5"/>
+        <rect x="345" y="69" width="100" height="18" rx="5"/>
+        <rect x="425" y="78" width="50" height="9" rx="4"/>
+        <rect x="125" y="102" width="42" height="60"
+              rx="7" transform="rotate(18 125 102)"/>
+        <rect x="260" y="102" width="45" height="58"
+              rx="7" transform="rotate(-18 260 102)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="170" y="79" width="100" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>Groza</h2>
+  <div class="type">ASSAULT RIFLE • 7.62mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">115%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">95%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">300%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>HIGH</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar high"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- UMP45 -->
+
+<div class="weapon" data-name="UMP45">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="95" y="77" width="270" height="30" rx="9"/>
+        <rect x="160" y="57" width="120" height="17" rx="5"/>
+        <rect x="340" y="70" width="80" height="18" rx="5"/>
+        <rect x="405" y="79" width="50" height="9" rx="4"/>
+        <rect x="150" y="104" width="45" height="60"
+              rx="7" transform="rotate(15 150 104)"/>
+        <rect x="270" y="104" width="43" height="52"
+              rx="7" transform="rotate(-14 270 104)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="185" y="80" width="80" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>UMP45</h2>
+  <div class="type">SMG • .45 ACP</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">125%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">105%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">280%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>LOW</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar low"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- VECTOR -->
+
+<div class="weapon" data-name="Vector">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="105" y="76" width="245" height="31" rx="9"/>
+        <rect x="155" y="55" width="110" height="18" rx="5"/>
+        <rect x="330" y="70" width="90" height="18" rx="5"/>
+        <rect x="405" y="78" width="55" height="9" rx="4"/>
+        <rect x="145" y="104" width="42" height="58"
+              rx="7" transform="rotate(16 145 104)"/>
+        <rect x="255" y="105" width="45" height="52"
+              rx="7" transform="rotate(-16 255 105)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="180" y="80" width="70" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>Vector</h2>
+  <div class="type">SMG • 9mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">125%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">105%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">280%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>MEDIUM</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar medium"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- DP28 -->
+
+<div class="weapon" data-name="DP-28">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="70" y="80" width="325" height="27" rx="8"/>
+        <rect x="125" y="55" width="180" height="20" rx="5"/>
+        <rect x="355" y="70" width="90" height="18" rx="5"/>
+        <circle cx="115" cy="65" r="34"/>
+        <rect x="130" y="103" width="42" height="60"
+              rx="7" transform="rotate(17 130 103)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="170" y="81" width="100" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>DP-28</h2>
+  <div class="type">LMG • 7.62mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">110%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">90%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">280%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>MEDIUM</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar medium"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+
+<!-- M762 -->
+
+<div class="weapon" data-name="M762">
+
+  <div class="weapon-image">
+    <svg viewBox="0 0 500 180">
+      <g fill="#d8e1ea">
+        <rect x="70" y="77" width="320" height="29" rx="8"/>
+        <rect x="130" y="55" width="160" height="19" rx="5"/>
+        <rect x="350" y="68" width="95" height="18" rx="5"/>
+        <rect x="425" y="78" width="50" height="9" rx="4"/>
+        <rect x="125" y="103" width="42" height="62"
+              rx="7" transform="rotate(18 125 103)"/>
+        <rect x="260" y="103" width="45" height="58"
+              rx="7" transform="rotate(-18 260 103)"/>
+      </g>
+      <g fill="#00e5ff">
+        <rect x="170" y="80" width="100" height="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>M762</h2>
+  <div class="type">ASSAULT RIFLE • 7.62mm</div>
+
+  <div class="setting">
+    <span>Camera</span>
+    <span class="value">115%</span>
+  </div>
+
+  <div class="setting">
+    <span>ADS</span>
+    <span class="value">95%</span>
+  </div>
+
+  <div class="setting">
+    <span>Gyroscope</span>
+    <span class="value">300%</span>
+  </div>
+
+  <div class="recoil-box">
+    <div class="recoil-head">
+      <span>Recoil</span>
+      <strong>HIGH</strong>
+    </div>
+
+    <div class="recoil-track">
+      <div class="recoil-bar high"></div>
+    </div>
+  </div>
+
+  <button class="open-btn">AYARLARI GÖR →</button>
+
+</div>
+
+</section>
+
+
+<div class="empty" id="empty">
+  🔎 Silah bulunamadı.
+</div>
+
+
+<a href="index.html" class="back">
+  ← Ana Sayfaya Dön
+</a>
 
 </main>
 
 
-<!-- =========================
-     SİLAH DETAY PENCERESİ
-     ========================= -->
+<!-- MODAL -->
 
 <div class="modal" id="weaponModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-header">
+  <div class="modal-header">
 
-      <h2 id="modalWeaponName">
-        🔫 M416
-      </h2>
+    <h2 id="modalWeaponName">
+      🔫 M416
+    </h2>
 
-      <button
-        class="close-modal"
-        id="closeModal"
-        aria-label="Kapat">
-        ×
-      </button>
+    <button
+      class="close-modal"
+      id="closeModal"
+      aria-label="Kapat">
+      ×
+    </button>
 
+  </div>
+
+
+  <div class="modal-image" id="modalImage"></div>
+
+
+  <div
+    class="type"
+    id="modalWeaponType">
+    ASSAULT RIFLE
+  </div>
+
+
+  <div
+    class="modal-settings"
+    id="modalSettings">
+  </div>
+
+
+  <h3 class="scope-title">
+    🎯 Dürbün Ayarları
+  </h3>
+
+
+  <div class="scope-grid">
+
+    <div class="scope">
+      <span>2x</span>
+      <strong id="scope2x">-</strong>
     </div>
 
-
-    <div
-      class="type"
-      id="modalWeaponType">
-      ASSAULT RIFLE
+    <div class="scope">
+      <span>3x</span>
+      <strong id="scope3x">-</strong>
     </div>
 
-
-    <div
-      class="modal-settings"
-      id="modalSettings">
+    <div class="scope">
+      <span>4x</span>
+      <strong id="scope4x">-</strong>
     </div>
 
-
-    <h3 class="scope-title">
-      🎯 Dürbün Ayarları
-    </h3>
-
-
-    <div class="scope-grid">
-
-      <div class="scope">
-        <span>2x</span>
-        <strong id="scope2x">-</strong>
-      </div>
-
-      <div class="scope">
-        <span>3x</span>
-        <strong id="scope3x">-</strong>
-      </div>
-
-      <div class="scope">
-        <span>4x</span>
-        <strong id="scope4x">-</strong>
-      </div>
-
-      <div class="scope">
-        <span>6x</span>
-        <strong id="scope6x">-</strong>
-      </div>
-
-    </div>
-
-
-    <div class="info-box"><div class="info-box">
-  🔥 M416 Önerilen Kurulum
-
-  ✔ Kompansatör
-  ✔ Dikey Tutacak
-
-  🎯 2x: Lazer
-  🎯 3x: Lazer
-  🎯 4x: Lazer
-
-  Daha stabil spray için jiroskop açık kullan.
-    </div>
-      💡 Bu değerler başlangıç için önerilen
-      recoil ve hassasiyet ayarlarıdır. Cihaz,
-      FPS ve oyun tarzına göre küçük değişiklikler
-      yapabilirsin.
+    <div class="scope">
+      <span>6x</span>
+      <strong id="scope6x">-</strong>
     </div>
 
   </div>
+
+
+  <h3 class="equipment-title">
+    ⚙️ Önerilen Ekipman
+  </h3>
+
+  <div class="equipment-grid">
+
+    <div class="equipment">
+      <span>Namlu</span>
+      <strong id="equipmentMuzzle">-</strong>
+    </div>
+
+    <div class="equipment">
+      <span>Tutacak</span>
+      <strong id="equipmentGrip">-</strong>
+    </div>
+
+    <div class="equipment">
+      <span>Şarjör</span>
+      <strong id="equipmentMag">-</strong>
+    </div>
+
+    <div class="equipment">
+      <span>Oyun Tarzı</span>
+      <strong id="equipmentStyle">-</strong>
+    </div>
+
+  </div>
+
+
+  <div class="info-box">
+    💡 Bu değerler başlangıç için önerilen recoil ve
+    hassasiyet ayarlarıdır. Cihaz, FPS ve oyun tarzına
+    göre küçük değişiklikler yapabilirsin.
+  </div>
+
+</div>
 
 </div>
 
 
 <footer>
-  © 2026 AimVerse Recoil
+  © 2026 AimVerse Recoil — PUBG Mobile yardımcı araçları
 </footer>
 
 
 <script>
 
-  /* =========================
-     ELEMENTLER
-     ========================= */
+/* =========================
+   ELEMENTLER
+========================= */
 
-  const search =
-    document.getElementById("search");
+const search =
+  document.getElementById("search");
 
-  const weapons =
-    document.querySelectorAll(".weapon");
+const weapons =
+  document.querySelectorAll(".weapon");
 
-  const empty =
-    document.getElementById("empty");
+const empty =
+  document.getElementById("empty");
 
-  const modal =
-    document.getElementById("weaponModal");
+const modal =
+  document.getElementById("weaponModal");
 
-  const closeModal =
-    document.getElementById("closeModal");
+const closeModal =
+  document.getElementById("closeModal");
 
-  const modalWeaponName =
-    document.getElementById("modalWeaponName");
+const modalWeaponName =
+  document.getElementById("modalWeaponName");
 
-  const modalWeaponType =
-    document.getElementById("modalWeaponType");
+const modalWeaponType =
+  document.getElementById("modalWeaponType");
 
-  const modalSettings =
-    document.getElementById("modalSettings");
+const modalSettings =
+  document.getElementById("modalSettings");
 
-  const scope2x =
-    document.getElementById("scope2x");
+const modalImage =
+  document.getElementById("modalImage");
 
-  const scope3x =
-    document.getElementById("scope3x");
+const scope2x =
+  document.getElementById("scope2x");
 
-  const scope4x =
-    document.getElementById("scope4x");
+const scope3x =
+  document.getElementById("scope3x");
 
-  const scope6x =
-    document.getElementById("scope6x");
+const scope4x =
+  document.getElementById("scope4x");
 
+const scope6x =
+  document.getElementById("scope6x");
 
-  /* =========================
-     DÜRBÜN AYARLARI
-     ========================= */
+const equipmentMuzzle =
+  document.getElementById("equipmentMuzzle");
 
-  const scopeSettings = {
+const equipmentGrip =
+  document.getElementById("equipmentGrip");
 
-    "M416": {
-      "2x": "45%",
-      "3x": "32%",
-      "4x": "24%",
-      "6x": "14%"
-    },
+const equipmentMag =
+  document.getElementById("equipmentMag");
 
-    "AKM": {
-      "2x": "42%",
-      "3x": "30%",
-      "4x": "22%",
-      "6x": "12%"
-    },
-
-    "AUG": {
-      "2x": "45%",
-      "3x": "32%",
-      "4x": "24%",
-      "6x": "14%"
-    },
-
-    "Groza": {
-      "2x": "42%",
-      "3x": "30%",
-      "4x": "22%",
-      "6x": "12%"
-    },
-
-    "UMP45": {
-      "2x": "48%",
-      "3x": "36%",
-      "4x": "27%",
-      "6x": "16%"
-    },
-
-    "Vector": {
-      "2x": "48%",
-      "3x": "36%",
-      "4x": "27%",
-      "6x": "16%"
-    },
-
-    "DP-28": {
-      "2x": "44%",
-      "3x": "33%",
-      "4x": "25%",
-      "6x": "15%"
-    },
-
-    "M762": {
-      "2x": "40%",
-      "3x": "28%",
-      "4x": "20%",
-      "6x": "11%"
-    }
-
-  };
+const equipmentStyle =
+  document.getElementById("equipmentStyle");
 
 
-  /* =========================
-     KARTLARA TIKLAMA
-     ========================= */
+/* =========================
+   DÜRBÜN AYARLARI
+========================= */
 
-  weapons.forEach(function(weapon) {
+const scopeSettings = {
 
-    weapon.addEventListener("click", function() {
+  "M416": {
+    "2x": "45%",
+    "3x": "32%",
+    "4x": "24%",
+    "6x": "14%"
+  },
 
-      const name =
-        weapon
-          .querySelector("h2")
-          .textContent
-          .trim();
+  "AKM": {
+    "2x": "42%",
+    "3x": "30%",
+    "4x": "22%",
+    "6x": "12%"
+  },
 
-      const type =
-        weapon
-          .querySelector(".type")
-          .textContent
-          .trim();
+  "AUG": {
+    "2x": "45%",
+    "3x": "32%",
+    "4x": "24%",
+    "6x": "14%"
+  },
 
+  "Groza": {
+    "2x": "42%",
+    "3x": "30%",
+    "4x": "22%",
+    "6x": "12%"
+  },
 
-      /* Başlık */
+  "UMP45": {
+    "2x": "48%",
+    "3x": "36%",
+    "4x": "27%",
+    "6x": "16%"
+  },
 
-      modalWeaponName.textContent =
-        "🔫 " + name;
+  "Vector": {
+    "2x": "48%",
+    "3x": "36%",
+    "4x": "27%",
+    "6x": "16%"
+  },
 
+  "DP-28": {
+    "2x": "44%",
+    "3x": "33%",
+    "4x": "25%",
+    "6x": "15%"
+  },
 
-      modalWeaponType.textContent =
-        type;
+  "M762": {
+    "2x": "40%",
+    "3x": "28%",
+    "4x": "20%",
+    "6x": "11%"
+  }
 
-
-      /* Kart ayarlarını modal içine aktar */
-
-      const settings =
-        weapon.querySelectorAll(".setting");
-
-
-      modalSettings.innerHTML = "";
-
-
-      settings.forEach(function(setting) {
-
-        const label =
-          setting
-            .querySelector("span:first-child")
-            .textContent;
-
-        const value =
-          setting
-            .querySelector(".value")
-            .textContent;
-
-
-        modalSettings.innerHTML += `
-          <div class="setting">
-            <span>${label}</span>
-            <span class="value">${value}</span>
-          </div>
-        `;
-
-      });
-
-
-      /* Dürbün değerleri */
-
-      const scopes =
-        scopeSettings[name] || {};
+};
 
 
-      scope2x.textContent =
-        scopes["2x"] || "-";
+/* =========================
+   EKİPMAN
+========================= */
 
-      scope3x.textContent =
-        scopes["3x"] || "-";
+const equipmentSettings = {
 
-      scope4x.textContent =
-        scopes["4x"] || "-";
+  "M416": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Stabil Spray"
+  },
 
-      scope6x.textContent =
-        scopes["6x"] || "-";
+  "AKM": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Şarjör",
+    style: "Kontrollü Spray"
+  },
+
+  "AUG": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Orta-Uzun Menzil"
+  },
+
+  "Groza": {
+    muzzle: "Kompansatör",
+    grip: "Yok",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Agresif Spray"
+  },
+
+  "UMP45": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Yakın Menzil"
+  },
+
+  "Vector": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Yakın Menzil"
+  },
+
+  "DP-28": {
+    muzzle: "Kompansatör",
+    grip: "Yok",
+    mag: "Standart",
+    style: "Orta Menzil"
+  },
+
+  "M762": {
+    muzzle: "Kompansatör",
+    grip: "Dikey Tutacak",
+    mag: "Uzatılmış Hızlı Şarjör",
+    style: "Agresif Spray"
+  }
+
+};
 
 
-      /* Modalı aç */
+/* =========================
+   KARTLARA TIKLAMA
+========================= */
 
-      modal.classList.add("active");
+weapons.forEach(function(weapon) {
 
-      /* Sayfanın arkada kaymasını önle */
+  weapon.addEventListener("click", function(event) {
 
-      document.body.style.overflow = "hidden";
+    /*
+      Butona veya karta basıldığında
+      aynı şekilde modal açılır.
+    */
+
+    const name =
+      weapon
+        .querySelector("h2")
+        .textContent
+        .trim();
+
+    const type =
+      weapon
+        .querySelector(".type")
+        .textContent
+        .trim();
+
+
+    /* BAŞLIK */
+
+    modalWeaponName.textContent =
+      "🔫 " + name;
+
+    modalWeaponType.textContent =
+      type;
+
+
+    /* KART AYARLARI */
+
+    const settings =
+      weapon.querySelectorAll(".setting");
+
+    modalSettings.innerHTML = "";
+
+
+    settings.forEach(function(setting) {
+
+      const label =
+        setting
+          .querySelector("span:first-child")
+          .textContent;
+
+      const value =
+        setting
+          .querySelector(".value")
+          .textContent;
+
+
+      modalSettings.innerHTML += `
+        <div class="setting">
+          <span>${label}</span>
+          <span class="value">${value}</span>
+        </div>
+      `;
 
     });
 
+
+    /* DÜRBÜN */
+
+    const scopes =
+      scopeSettings[name] || {};
+
+    scope2x.textContent =
+      scopes["2x"] || "-";
+
+    scope3x.textContent =
+      scopes["3x"] || "-";
+
+    scope4x.textContent =
+      scopes["4x"] || "-";
+
+    scope6x.textContent =
+      scopes["6x"] || "-";
+
+
+    /* EKİPMAN */
+
+    const equipment =
+      equipmentSettings[name] || {};
+
+    equipmentMuzzle.textContent =
+      equipment.muzzle || "-";
+
+    equipmentGrip.textContent =
+      equipment.grip || "-";
+
+    equipmentMag.textContent =
+      equipment.mag || "-";
+
+    equipmentStyle.textContent =
+      equipment.style || "-";
+
+
+    /* SİLAH GÖRSELİNİ KARTA TAŞI */
+
+    const image =
+      weapon.querySelector(".weapon-image");
+
+    modalImage.innerHTML =
+      image.innerHTML;
+
+
+    /* MODAL AÇ */
+
+    modal.classList.add("active");
+
+    document.body.style.overflow =
+      "hidden";
+
   });
 
+});
 
-  /* =========================
-     MODALI KAPAT
-     ========================= */
 
-  function closeWeaponModal() {
+/* =========================
+   MODALI KAPAT
+========================= */
 
-    modal.classList.remove("active");
+function closeWeaponModal() {
 
-    document.body.style.overflow = "";
+  modal.classList.remove("active");
+
+  document.body.style.overflow = "";
+
+}
+
+
+closeModal.addEventListener(
+  "click",
+  closeWeaponModal
+);
+
+
+/* ARKA PLANA BASINCA KAPAT */
+
+modal.addEventListener(
+  "click",
+  function(event) {
+
+    if (event.target === modal) {
+      closeWeaponModal();
+    }
 
   }
+);
 
 
-  closeModal.addEventListener(
-    "click",
-    closeWeaponModal
-  );
+/* ESC */
 
+document.addEventListener(
+  "keydown",
+  function(event) {
 
-  /* Arka plana basınca kapat */
-
-  modal.addEventListener(
-    "click",
-    function(event) {
-
-      if (event.target === modal) {
-
-        closeWeaponModal();
-
-      }
-
+    if (event.key === "Escape") {
+      closeWeaponModal();
     }
-  );
+
+  }
+);
 
 
-  /* ESC ile kapat */
+/* =========================
+   SİLAH ARAMA
+========================= */
 
-  document.addEventListener(
-    "keydown",
-    function(event) {
+search.addEventListener(
+  "input",
+  function() {
 
-      if (event.key === "Escape") {
+    const query =
+      this.value
+        .toLowerCase()
+        .trim();
 
-        closeWeaponModal();
-
-      }
-
-    }
-  );
-
-
-  /* =========================
-     SİLAH ARAMA
-     ========================= */
-
-  search.addEventListener(
-    "input",
-    function() {
-
-      const query =
-        this.value
-          .toLowerCase()
-          .trim();
-
-      let found = 0;
+    let found = 0;
 
 
-      weapons.forEach(
-        function(weapon) {
+    weapons.forEach(
+      function(weapon) {
 
-          const name =
-            weapon
-              .querySelector("h2")
-              .textContent
-              .toLowerCase();
+        const name =
+          weapon
+            .querySelector("h2")
+            .textContent
+            .toLowerCase();
 
 
-          if (name.includes(query)) {
+        if (name.includes(query)) {
 
-            weapon.style.display = "";
+          weapon.style.display = "";
+          found++;
 
-            found++;
+        } else {
 
-          } else {
-
-            weapon.style.display =
-              "none";
-
-          }
+          weapon.style.display = "none";
 
         }
-      );
+
+      }
+    );
 
 
-      empty.style.display =
-        found === 0
-          ? "block"
-          : "none";
+    empty.style.display =
+      found === 0
+        ? "block"
+        : "none";
 
-    }
-  );
+  }
+);
 
 </script>
 
 </body>
-</html>
+  </html>
