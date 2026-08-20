@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -22,6 +21,7 @@
   --green:#42e695;
   --yellow:#ffd166;
   --red:#ff5577;
+  --purple:#a78bfa;
   --shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
@@ -31,17 +31,22 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at 20% 0%,rgba(35,140,255,.12),transparent 30%),
-    radial-gradient(circle at 90% 20%,rgba(94,231,255,.08),transparent 25%),
+    radial-gradient(circle at 15% 0%,rgba(35,140,255,.13),transparent 30%),
+    radial-gradient(circle at 90% 10%,rgba(94,231,255,.08),transparent 25%),
     var(--bg);
   color:var(--text);
   min-height:100vh;
 }
 
-button,input{
+button,
+input{
   font:inherit;
 }
 
@@ -61,7 +66,7 @@ a{
   top:0;
   z-index:50;
   backdrop-filter:blur(18px);
-  background:rgba(7,10,16,.78);
+  background:rgba(7,10,16,.82);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 
@@ -72,13 +77,13 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:15px;
 }
 
 .logo{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:-.5px;
+  font-size:21px;
+  font-weight:950;
+  letter-spacing:-.7px;
 }
 
 .logo span{
@@ -87,8 +92,8 @@ a{
 
 .nav-badge{
   font-size:10px;
-  font-weight:800;
-  padding:6px 9px;
+  font-weight:900;
+  padding:7px 10px;
   border:1px solid rgba(94,231,255,.25);
   color:var(--primary);
   border-radius:999px;
@@ -100,28 +105,28 @@ a{
 .hero{
   max-width:1200px;
   margin:auto;
-  padding:55px 20px 30px;
+  padding:58px 20px 32px;
 }
 
 .eyebrow{
   display:inline-flex;
-  gap:7px;
   align-items:center;
+  gap:7px;
   padding:7px 11px;
   border-radius:999px;
   background:rgba(94,231,255,.07);
   border:1px solid rgba(94,231,255,.18);
   color:var(--primary);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.9px;
 }
 
 .hero h1{
   margin-top:18px;
-  font-size:clamp(34px,6vw,58px);
+  font-size:clamp(36px,6vw,60px);
   line-height:1;
-  letter-spacing:-2px;
+  letter-spacing:-2.5px;
 }
 
 .hero h1 span{
@@ -129,18 +134,18 @@ a{
 }
 
 .hero p{
-  margin-top:17px;
-  max-width:650px;
+  margin-top:18px;
+  max-width:680px;
   color:var(--muted);
-  line-height:1.7;
+  line-height:1.75;
   font-size:15px;
 }
 
-/* SEARCH */
+/* TOOLBAR */
 
 .toolbar{
   max-width:1200px;
-  margin:0 auto 30px;
+  margin:0 auto 28px;
   padding:0 20px;
 }
 
@@ -159,8 +164,12 @@ a{
   transition:.25s;
 }
 
+.search input::placeholder{
+  color:#647184;
+}
+
 .search input:focus{
-  border-color:rgba(94,231,255,.6);
+  border-color:rgba(94,231,255,.65);
   box-shadow:0 0 0 4px rgba(94,231,255,.06);
 }
 
@@ -174,9 +183,9 @@ a{
 
 .filters{
   display:flex;
-  gap:9px;
+  gap:8px;
   flex-wrap:wrap;
-  margin-top:13px;
+  margin-top:12px;
 }
 
 .filter{
@@ -185,15 +194,15 @@ a{
   color:var(--muted);
   padding:9px 13px;
   border-radius:10px;
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:900;
   transition:.2s;
 }
 
 .filter:hover,
 .filter.active{
   color:var(--primary);
-  border-color:rgba(94,231,255,.35);
+  border-color:rgba(94,231,255,.4);
   background:rgba(94,231,255,.07);
 }
 
@@ -212,20 +221,21 @@ a{
   background:linear-gradient(145deg,var(--panel),#0a0f17);
   border:1px solid var(--border);
   border-radius:15px;
-  padding:15px;
+  padding:16px;
 }
 
 .stat small{
   color:var(--muted);
-  font-size:10px;
-  font-weight:800;
+  font-size:9px;
+  font-weight:900;
   text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
 .stat strong{
   display:block;
-  margin-top:5px;
-  font-size:22px;
+  margin-top:6px;
+  font-size:21px;
 }
 
 /* GRID */
@@ -255,32 +265,47 @@ a{
   box-shadow:var(--shadow);
 }
 
+.card::after{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  right:-70px;
+  top:-70px;
+  background:rgba(94,231,255,.04);
+  border-radius:50%;
+  pointer-events:none;
+}
+
 .card-top{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
+  gap:12px;
 }
 
 .weapon-name{
   font-size:22px;
-  font-weight:900;
+  font-weight:950;
+  letter-spacing:-.5px;
 }
 
 .weapon-meta{
   color:var(--muted);
-  font-size:10px;
-  font-weight:800;
-  margin-top:5px;
+  font-size:9px;
+  font-weight:900;
+  margin-top:6px;
   text-transform:uppercase;
+  letter-spacing:.4px;
 }
 
 .badge{
   padding:6px 8px;
   border-radius:8px;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.5px;
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:.6px;
+  white-space:nowrap;
 }
 
 .badge.low{
@@ -299,17 +324,17 @@ a{
 }
 
 .scores{
-  margin:22px 0;
+  margin:22px 0 18px;
   display:grid;
   gap:11px;
 }
 
 .score-line{
   display:grid;
-  grid-template-columns:80px 1fr 35px;
+  grid-template-columns:82px 1fr 34px;
   align-items:center;
-  gap:10px;
-  font-size:11px;
+  gap:9px;
+  font-size:10px;
   color:var(--muted);
 }
 
@@ -330,7 +355,7 @@ a{
 .score-value{
   text-align:right;
   color:white;
-  font-weight:800;
+  font-weight:900;
 }
 
 .sensitivity{
@@ -344,13 +369,14 @@ a{
   border:1px solid var(--border);
   border-radius:9px;
   text-align:center;
+  background:rgba(255,255,255,.015);
 }
 
 .sens small{
   display:block;
   color:var(--muted);
   font-size:8px;
-  font-weight:800;
+  font-weight:900;
 }
 
 .sens strong{
@@ -367,7 +393,8 @@ a{
   background:rgba(94,231,255,.06);
   color:var(--primary);
   border-radius:11px;
-  font-weight:900;
+  font-weight:950;
+  font-size:11px;
   transition:.2s;
 }
 
@@ -380,7 +407,7 @@ a{
 
 .empty{
   grid-column:1/-1;
-  padding:60px 20px;
+  padding:65px 20px;
   text-align:center;
   color:var(--muted);
   border:1px dashed var(--border);
@@ -397,7 +424,7 @@ a{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:rgba(0,0,0,.72);
+  background:rgba(0,0,0,.76);
   backdrop-filter:blur(10px);
 }
 
@@ -417,8 +444,14 @@ a{
 }
 
 @keyframes modalIn{
-  from{opacity:0;transform:translateY(15px) scale(.98)}
-  to{opacity:1;transform:none}
+  from{
+    opacity:0;
+    transform:translateY(15px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 .modal-head{
@@ -434,6 +467,11 @@ a{
   align-items:center;
 }
 
+.modal-head h2{
+  margin-top:9px;
+  font-size:28px;
+}
+
 .close{
   width:38px;
   height:38px;
@@ -442,6 +480,11 @@ a{
   color:white;
   border-radius:10px;
   font-size:20px;
+}
+
+.close:hover{
+  border-color:var(--primary);
+  color:var(--primary);
 }
 
 .modal-content{
@@ -454,7 +497,7 @@ a{
 
 .section-title{
   font-size:13px;
-  font-weight:900;
+  font-weight:950;
   margin-bottom:13px;
   display:flex;
   align-items:center;
@@ -468,7 +511,7 @@ a{
 }
 
 .detail{
-  padding:13px;
+  padding:14px;
   border-radius:12px;
   background:#0f1722;
   border:1px solid var(--border);
@@ -478,40 +521,58 @@ a{
   color:var(--muted);
   display:block;
   font-size:9px;
-  font-weight:800;
+  font-weight:900;
 }
 
 .detail strong{
   display:block;
   margin-top:5px;
-  font-size:16px;
+  font-size:17px;
 }
 
 .scope-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  grid-template-columns:repeat(6,1fr);
+  gap:9px;
 }
 
 .scope{
   background:#0f1722;
   border:1px solid var(--border);
   border-radius:12px;
-  padding:13px;
+  padding:13px 8px;
   text-align:center;
 }
 
 .scope small{
   display:block;
   color:var(--muted);
-  font-size:9px;
+  font-size:8px;
+  font-weight:900;
 }
 
 .scope strong{
   display:block;
   margin-top:5px;
   color:var(--primary);
-  font-size:17px;
+  font-size:16px;
+}
+
+.modal-score{
+  margin-bottom:12px;
+}
+
+.modal-score-head{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.modal-score-head strong{
+  color:white;
 }
 
 .loadout{
@@ -531,13 +592,13 @@ a{
   display:block;
   color:var(--muted);
   font-size:9px;
-  font-weight:800;
+  font-weight:900;
   text-transform:uppercase;
 }
 
 .load strong{
   display:block;
-  margin-top:5px;
+  margin-top:6px;
   font-size:13px;
 }
 
@@ -554,9 +615,11 @@ a{
   border-radius:10px;
   padding:11px 6px;
   font-size:10px;
-  font-weight:900;
+  font-weight:950;
+  transition:.2s;
 }
 
+.profile:hover,
 .profile.active{
   border-color:var(--primary);
   color:var(--primary);
@@ -576,7 +639,11 @@ a{
   border:1px solid var(--border);
   background:#111925;
   color:white;
-  font-weight:900;
+  font-weight:950;
+}
+
+.action:hover{
+  border-color:var(--primary);
 }
 
 .action.primary{
@@ -585,31 +652,63 @@ a{
   border:0;
 }
 
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%) translateY(100px);
+  z-index:200;
+  background:#111b29;
+  color:white;
+  border:1px solid rgba(94,231,255,.3);
+  border-radius:12px;
+  padding:12px 16px;
+  font-size:11px;
+  font-weight:900;
+  opacity:0;
+  transition:.3s;
+  pointer-events:none;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
 /* FOOTER */
 
 footer{
   border-top:1px solid var(--border);
-  padding:25px 20px;
+  padding:26px 20px;
   text-align:center;
   color:var(--muted);
-  font-size:11px;
+  font-size:10px;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:900px){
+@media(max-width:950px){
+
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .quick-stats{
-    grid-template-columns:repeat(2,1fr);
+  .scope-grid{
+    grid-template-columns:repeat(3,1fr);
   }
+
 }
 
-@media(max-width:600px){
+@media(max-width:650px){
+
   .hero{
-    padding-top:35px;
+    padding-top:38px;
+  }
+
+  .hero h1{
+    letter-spacing:-1.8px;
   }
 
   .grid{
@@ -621,13 +720,16 @@ footer{
   }
 
   .detail-grid,
-  .scope-grid,
   .loadout{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
+  }
+
+  .scope-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .profiles{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
   }
 
   .modal{
@@ -636,7 +738,30 @@ footer{
 
   .modal-box{
     border-radius:18px;
+    max-height:94vh;
   }
+
+  .modal-head h2{
+    font-size:23px;
+  }
+
+}
+
+@media(max-width:400px){
+
+  .quick-stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .scope-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .detail-grid,
+  .loadout{
+    grid-template-columns:1fr;
+  }
+
 }
 </style>
 </head>
@@ -644,40 +769,89 @@ footer{
 <body>
 
 <header class="header">
+
   <nav class="nav">
-    <div class="logo">AimVerse <span>Recoil</span></div>
-    <div class="nav-badge">PUBG MOBILE AIM SYSTEM</div>
+
+    <div class="logo">
+      AimVerse <span>Recoil</span>
+    </div>
+
+    <div class="nav-badge">
+      PUBG MOBILE AIM SYSTEM
+    </div>
+
   </nav>
+
 </header>
 
+
 <section class="hero">
-  <div class="eyebrow">🎯 PROFESSIONAL WEAPON LAB</div>
-  <h1>Silah <span>Ayarları</span></h1>
+
+  <div class="eyebrow">
+    🎯 PROFESSIONAL WEAPON LAB
+  </div>
+
+  <h1>
+    Silah <span>Ayarları</span>
+  </h1>
+
   <p>
-    PUBG Mobile silahlarını karşılaştır, recoil seviyesini analiz et
+    PUBG Mobile silahlarını karşılaştır, recoil seviyelerini analiz et
     ve profesyonel hassasiyet ayarlarını tek ekrandan görüntüle.
   </p>
+
 </section>
+
 
 <section class="toolbar">
 
   <div class="search">
+
     <span class="search-icon">🔎</span>
-    <input id="search" type="search" placeholder="Silah ara... Örn: M416, AKM, UMP45">
+
+    <input
+      id="search"
+      type="search"
+      autocomplete="off"
+      placeholder="Silah ara... Örn: M416, AKM, UMP45"
+    >
+
   </div>
 
+
   <div class="filters">
-    <button class="filter active" data-filter="ALL">Tümü</button>
-    <button class="filter" data-filter="ASSAULT RIFLE">Assault Rifle</button>
-    <button class="filter" data-filter="SMG">SMG</button>
-    <button class="filter" data-filter="LMG">LMG</button>
-    <button class="filter" data-filter="SNIPER">Sniper</button>
-    <button class="filter" data-filter="DMR">DMR</button>
+
+    <button class="filter active" data-filter="ALL">
+      Tümü
+    </button>
+
+    <button class="filter" data-filter="ASSAULT RIFLE">
+      Assault Rifle
+    </button>
+
+    <button class="filter" data-filter="SMG">
+      SMG
+    </button>
+
+    <button class="filter" data-filter="LMG">
+      LMG
+    </button>
+
+    <button class="filter" data-filter="SNIPER">
+      Sniper
+    </button>
+
+    <button class="filter" data-filter="DMR">
+      DMR
+    </button>
+
   </div>
 
 </section>
 
+
 <section class="quick-stats">
+
   <div class="stat">
     <small>Silah Sayısı</small>
     <strong id="weaponCount">0</strong>
@@ -689,7 +863,7 @@ footer{
   </div>
 
   <div class="stat">
-    <small>En Düşük Recoil</small>
+    <small>En İyi Kontrol</small>
     <strong id="lowestRecoil">-</strong>
   </div>
 
@@ -697,664 +871,1430 @@ footer{
     <small>PRO Sistem</small>
     <strong>ACTIVE</strong>
   </div>
+
 </section>
 
-<main class="grid" id="weaponGrid"></main>
+
+<main
+  class="grid"
+  id="weaponGrid"
+>
+</main>
+
 
 <footer>
   © 2026 AimVerse Recoil — PUBG Mobile yardımcı araçları
 </footer>
 
-<!-- MODAL -->
 
-<div class="modal" id="modal">
+<div
+  class="modal"
+  id="modal"
+  aria-hidden="true"
+>
+
   <div class="modal-box">
 
     <div class="modal-head">
+
       <div>
-        <div class="eyebrow">WEAPON PROFILE</div>
-        <h2 id="modalTitle" style="margin-top:9px"></h2>
+
+        <div class="eyebrow">
+          WEAPON PROFILE
+        </div>
+
+        <h2 id="modalTitle">
+          Silah
+        </h2>
+
       </div>
-      <button class="close" id="closeModal">×</button>
+
+      <button
+        class="close"
+        id="closeModal"
+        aria-label="Kapat"
+      >
+        ×
+      </button>
+
     </div>
+
 
     <div class="modal-content">
 
+
       <div class="section">
-        <div class="section-title">🎯 Hassasiyet Ayarları</div>
+
+        <div class="section-title">
+          🎯 Hassasiyet Ayarları
+        </div>
 
         <div class="detail-grid">
+
           <div class="detail">
             <small>Camera</small>
-            <strong id="mCamera"></strong>
+            <strong id="mCamera">-</strong>
           </div>
 
           <div class="detail">
             <small>ADS</small>
-            <strong id="mAds"></strong>
+            <strong id="mAds">-</strong>
           </div>
 
           <div class="detail">
             <small>Gyroscope</small>
-            <strong id="mGyro"></strong>
+            <strong id="mGyro">-</strong>
           </div>
+
         </div>
+
       </div>
 
-      <div class="section">
-        <div class="section-title">🔭 Dürbün Hassasiyetleri</div>
-        <div class="scope-grid" id="scopeGrid"></div>
-      </div>
 
       <div class="section">
-        <div class="section-title">📊 Recoil Analizi</div>
-        <div id="modalScores"></div>
+
+        <div class="section-title">
+          🔭 Dürbün Hassasiyetleri
+        </div>
+
+        <div
+          class="scope-grid"
+          id="scopeGrid"
+        >
+        </div>
+
       </div>
 
+
       <div class="section">
-        <div class="section-title">⚙️ Önerilen Ekipman</div>
+
+        <div class="section-title">
+          📊 Recoil Analizi
+        </div>
+
+        <div id="modalScores">
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          ⚙️ Önerilen Ekipman
+        </div>
 
         <div class="loadout">
+
           <div class="load">
             <span>Namlu</span>
-            <strong id="mMuzzle"></strong>
+            <strong id="mMuzzle">-</strong>
           </div>
 
           <div class="load">
             <span>Tutacak</span>
-            <strong id="mGrip"></strong>
+            <strong id="mGrip">-</strong>
           </div>
 
           <div class="load">
             <span>Şarjör</span>
-            <strong id="mMag"></strong>
+            <strong id="mMag">-</strong>
           </div>
+
         </div>
+
       </div>
+
 
       <div class="section">
-        <div class="section-title">🎮 Oyun Profili</div>
+
+        <div class="section-title">
+          🎮 Oyun Profili
+        </div>
 
         <div class="profiles">
-          <button class="profile" data-profile="PRO">🏆 PRO</button>
-          <button class="profile active" data-profile="STABLE">🎯 STABLE</button>
-          <button class="profile" data-profile="AGGRESSIVE">🔥 AGGRESSIVE</button>
-          <button class="profile" data-profile="LONG">🔭 LONG RANGE</button>
+
+          <button
+            class="profile"
+            data-profile="PRO"
+          >
+            🏆 PRO
+          </button>
+
+          <button
+            class="profile active"
+            data-profile="STABLE"
+          >
+            🎯 STABLE
+          </button>
+
+          <button
+            class="profile"
+            data-profile="AGGRESSIVE"
+          >
+            🔥 AGGRESSIVE
+          </button>
+
+          <button
+            class="profile"
+            data-profile="LONG"
+          >
+            🔭 LONG RANGE
+          </button>
+
         </div>
+
       </div>
 
+
       <div class="actions">
-        <button class="action" id="resetBtn">↺ Sıfırla</button>
-        <button class="action primary" id="saveBtn">💾 Ayarı Kaydet</button>
+
+        <button
+          class="action"
+          id="resetBtn"
+        >
+          ↺ Sıfırla
+        </button>
+
+        <button
+          class="action primary"
+          id="saveBtn"
+        >
+          💾 Ayarı Kaydet
+        </button>
+
       </div>
 
     </div>
+
   </div>
+
 </div>
+
+
+<div
+  class="toast"
+  id="toast"
+>
+  Ayar kaydedildi.
+</div>
+
 
 <script>
 
+/*
+  AIMVERSE RECOIL
+  PROFESSIONAL WEAPON DATABASE
+*/
+
+"use strict";
+
+
 const weapons = [
 
-{
-name:"M416",
-category:"ASSAULT RIFLE",
-ammo:"5.56mm",
-recoil:"LOW",
-control:94,
-stability:92,
-close:96,
-camera:120,
-ads:100,
-gyro:300,
-scopes:{
-"Red Dot":45,
-"2x":38,
-"3x":30,
-"4x":24,
-"6x":15,
-"8x":10
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+  {
+    name: "M416",
+    category: "ASSAULT RIFLE",
+    ammo: "5.56mm",
+    recoil: "LOW",
+    control: 94,
+    stability: 92,
+    close: 96,
+    camera: 120,
+    ads: 100,
+    gyro: 300,
 
-{
-name:"AKM",
-category:"ASSAULT RIFLE",
-ammo:"7.62mm",
-recoil:"HIGH",
-control:72,
-stability:69,
-close:90,
-camera:115,
-ads:95,
-gyro:300,
-scopes:{
-"Red Dot":43,
-"2x":35,
-"3x":28,
-"4x":22,
-"6x":14,
-"8x":9
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+    scopes: {
+      "Red Dot": 45,
+      "2x": 38,
+      "3x": 30,
+      "4x": 24,
+      "6x": 15,
+      "8x": 10
+    },
 
-{
-name:"AUG",
-category:"ASSAULT RIFLE",
-ammo:"5.56mm",
-recoil:"LOW",
-control:93,
-stability:94,
-close:94,
-camera:118,
-ads:98,
-gyro:290,
-scopes:{
-"Red Dot":44,
-"2x":37,
-"3x":29,
-"4x":23,
-"6x":15,
-"8x":10
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
 
-{
-name:"Groza",
-category:"ASSAULT RIFLE",
-ammo:"7.62mm",
-recoil:"HIGH",
-control:75,
-stability:70,
-close:96,
-camera:113,
-ads:93,
-gyro:300,
-scopes:{
-"Red Dot":42,
-"2x":34,
-"3x":27,
-"4x":21,
-"6x":13,
-"8x":8
-},
-muzzle:"Suppressor",
-grip:"—",
-mag:"Extended Quickdraw"
-},
 
-{
-name:"M762",
-category:"ASSAULT RIFLE",
-ammo:"7.62mm",
-recoil:"HIGH",
-control:70,
-stability:66,
-close:94,
-camera:114,
-ads:94,
-gyro:310,
-scopes:{
-"Red Dot":41,
-"2x":34,
-"3x":27,
-"4x":20,
-"6x":13,
-"8x":8
-},
-muzzle:"Compensator",
-grip:"Half Grip",
-mag:"Extended Quickdraw"
-},
+  {
+    name: "AKM",
+    category: "ASSAULT RIFLE",
+    ammo: "7.62mm",
+    recoil: "HIGH",
+    control: 72,
+    stability: 69,
+    close: 90,
+    camera: 115,
+    ads: 95,
+    gyro: 300,
 
-{
-name:"UMP45",
-category:"SMG",
-ammo:".45 ACP",
-recoil:"LOW",
-control:96,
-stability:95,
-close:97,
-camera:125,
-ads:105,
-gyro:280,
-scopes:{
-"Red Dot":48,
-"2x":40,
-"3x":32,
-"4x":25,
-"6x":15,
-"8x":10
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+    scopes: {
+      "Red Dot": 43,
+      "2x": 35,
+      "3x": 28,
+      "4x": 22,
+      "6x": 14,
+      "8x": 9
+    },
 
-{
-name:"Vector",
-category:"SMG",
-ammo:"9mm",
-recoil:"MEDIUM",
-control:88,
-stability:83,
-close:99,
-camera:123,
-ads:103,
-gyro:285,
-scopes:{
-"Red Dot":47,
-"2x":39,
-"3x":31,
-"4x":24,
-"6x":15,
-"8x":10
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
 
-{
-name:"DP-28",
-category:"LMG",
-ammo:"7.62mm",
-recoil:"MEDIUM",
-control:84,
-stability:86,
-close:83,
-camera:110,
-ads:90,
-gyro:280,
-scopes:{
-"Red Dot":40,
-"2x":34,
-"3x":27,
-"4x":21,
-"6x":13,
-"8x":8
-},
-muzzle:"—",
-grip:"—",
-mag:"—"
-},
 
-{
-name:"SCAR-L",
-category:"ASSAULT RIFLE",
-ammo:"5.56mm",
-recoil:"LOW",
-control:91,
-stability:90,
-close:91,
-camera:119,
-ads:99,
-gyro:295,
-scopes:{
-"Red Dot":44,
-"2x":37,
-"3x":29,
-"4x":23,
-"6x":14,
-"8x":9
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+  {
+    name: "AUG",
+    category: "ASSAULT RIFLE",
+    ammo: "5.56mm",
+    recoil: "LOW",
+    control: 93,
+    stability: 94,
+    close: 94,
+    camera: 118,
+    ads: 98,
+    gyro: 290,
 
-{
-name:"ACE32",
-category:"ASSAULT RIFLE",
-ammo:"7.62mm",
-recoil:"MEDIUM",
-control:82,
-stability:78,
-close:91,
-camera:116,
-ads:96,
-gyro:305,
-scopes:{
-"Red Dot":42,
-"2x":35,
-"3x":28,
-"4x":22,
-"6x":13,
-"8x":8
-},
-muzzle:"Compensator",
-grip:"Vertical Grip",
-mag:"Extended Quickdraw"
-},
+    scopes: {
+      "Red Dot": 44,
+      "2x": 37,
+      "3x": 29,
+      "4x": 23,
+      "6x": 15,
+      "8x": 10
+    },
 
-{
-name:"Mini14",
-category:"DMR",
-ammo:"5.56mm",
-recoil:"LOW",
-control:95,
-stability:96,
-close:74,
-camera:108,
-ads:88,
-gyro:260,
-scopes:{
-"Red Dot":40,
-"2x":34,
-"3x":27,
-"4x":21,
-"6x":14,
-"8x":9
-},
-muzzle:"Compensator",
-grip:"—",
-mag:"Extended Quickdraw"
-},
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
 
-{
-name:"Kar98k",
-category:"SNIPER",
-ammo:"7.62mm",
-recoil:"LOW",
-control:92,
-stability:93,
-close:45,
-camera:105,
-ads:85,
-gyro:250,
-scopes:{
-"Red Dot":35,
-"2x":30,
-"3x":24,
-"4x":19,
-"6x":12,
-"8x":8
-},
-muzzle:"Suppressor",
-grip:"—",
-mag:"Extended"
-}
+
+  {
+    name: "Groza",
+    category: "ASSAULT RIFLE",
+    ammo: "7.62mm",
+    recoil: "HIGH",
+    control: 75,
+    stability: 70,
+    close: 96,
+    camera: 113,
+    ads: 93,
+    gyro: 300,
+
+    scopes: {
+      "Red Dot": 42,
+      "2x": 34,
+      "3x": 27,
+      "4x": 21,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "Suppressor",
+    grip: "Built-in",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "M762",
+    category: "ASSAULT RIFLE",
+    ammo: "7.62mm",
+    recoil: "HIGH",
+    control: 70,
+    stability: 66,
+    close: 94,
+    camera: 114,
+    ads: 94,
+    gyro: 310,
+
+    scopes: {
+      "Red Dot": 41,
+      "2x": 34,
+      "3x": 27,
+      "4x": 20,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "Compensator",
+    grip: "Half Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "SCAR-L",
+    category: "ASSAULT RIFLE",
+    ammo: "5.56mm",
+    recoil: "LOW",
+    control: 91,
+    stability: 90,
+    close: 91,
+    camera: 119,
+    ads: 99,
+    gyro: 295,
+
+    scopes: {
+      "Red Dot": 44,
+      "2x": 37,
+      "3x": 29,
+      "4x": 23,
+      "6x": 14,
+      "8x": 9
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "ACE32",
+    category: "ASSAULT RIFLE",
+    ammo: "7.62mm",
+    recoil: "MEDIUM",
+    control: 82,
+    stability: 78,
+    close: 91,
+    camera: 116,
+    ads: 96,
+    gyro: 305,
+
+    scopes: {
+      "Red Dot": 42,
+      "2x": 35,
+      "3x": 28,
+      "4x": 22,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "UMP45",
+    category: "SMG",
+    ammo: ".45 ACP",
+    recoil: "LOW",
+    control: 96,
+    stability: 95,
+    close: 97,
+    camera: 125,
+    ads: 105,
+    gyro: 280,
+
+    scopes: {
+      "Red Dot": 48,
+      "2x": 40,
+      "3x": 32,
+      "4x": 25,
+      "6x": 15,
+      "8x": 10
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "Vector",
+    category: "SMG",
+    ammo: "9mm",
+    recoil: "MEDIUM",
+    control: 88,
+    stability: 83,
+    close: 99,
+    camera: 123,
+    ads: 103,
+    gyro: 285,
+
+    scopes: {
+      "Red Dot": 47,
+      "2x": 39,
+      "3x": 31,
+      "4x": 24,
+      "6x": 15,
+      "8x": 10
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "MP5K",
+    category: "SMG",
+    ammo: "9mm",
+    recoil: "LOW",
+    control: 94,
+    stability: 91,
+    close: 98,
+    camera: 124,
+    ads: 104,
+    gyro: 280,
+
+    scopes: {
+      "Red Dot": 47,
+      "2x": 39,
+      "3x": 31,
+      "4x": 24,
+      "6x": 14,
+      "8x": 9
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "DP-28",
+    category: "LMG",
+    ammo: "7.62mm",
+    recoil: "MEDIUM",
+    control: 84,
+    stability: 86,
+    close: 83,
+    camera: 110,
+    ads: 90,
+    gyro: 280,
+
+    scopes: {
+      "Red Dot": 40,
+      "2x": 34,
+      "3x": 27,
+      "4x": 21,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "None",
+    grip: "None",
+    mag: "None"
+  },
+
+
+  {
+    name: "M249",
+    category: "LMG",
+    ammo: "5.56mm",
+    recoil: "MEDIUM",
+    control: 83,
+    stability: 80,
+    close: 92,
+    camera: 112,
+    ads: 92,
+    gyro: 285,
+
+    scopes: {
+      "Red Dot": 41,
+      "2x": 34,
+      "3x": 27,
+      "4x": 21,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "None",
+    grip: "None",
+    mag: "Extended"
+  },
+
+
+  {
+    name: "Mini14",
+    category: "DMR",
+    ammo: "5.56mm",
+    recoil: "LOW",
+    control: 95,
+    stability: 96,
+    close: 74,
+    camera: 108,
+    ads: 88,
+    gyro: 260,
+
+    scopes: {
+      "Red Dot": 40,
+      "2x": 34,
+      "3x": 27,
+      "4x": 21,
+      "6x": 14,
+      "8x": 9
+    },
+
+    muzzle: "Compensator",
+    grip: "None",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "SKS",
+    category: "DMR",
+    ammo: "7.62mm",
+    recoil: "MEDIUM",
+    control: 78,
+    stability: 76,
+    close: 70,
+    camera: 107,
+    ads: 87,
+    gyro: 270,
+
+    scopes: {
+      "Red Dot": 39,
+      "2x": 33,
+      "3x": 26,
+      "4x": 20,
+      "6x": 13,
+      "8x": 8
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "SLR",
+    category: "DMR",
+    ammo: "7.62mm",
+    recoil: "HIGH",
+    control: 73,
+    stability: 70,
+    close: 68,
+    camera: 105,
+    ads: 85,
+    gyro: 275,
+
+    scopes: {
+      "Red Dot": 38,
+      "2x": 32,
+      "3x": 25,
+      "4x": 19,
+      "6x": 12,
+      "8x": 8
+    },
+
+    muzzle: "Compensator",
+    grip: "Vertical Grip",
+    mag: "Extended Quickdraw"
+  },
+
+
+  {
+    name: "Kar98k",
+    category: "SNIPER",
+    ammo: "7.62mm",
+    recoil: "LOW",
+    control: 92,
+    stability: 93,
+    close: 45,
+    camera: 105,
+    ads: 85,
+    gyro: 250,
+
+    scopes: {
+      "Red Dot": 35,
+      "2x": 30,
+      "3x": 24,
+      "4x": 19,
+      "6x": 12,
+      "8x": 8
+    },
+
+    muzzle: "Suppressor",
+    grip: "None",
+    mag: "Extended"
+  },
+
+
+  {
+    name: "M24",
+    category: "SNIPER",
+    ammo: "7.62mm",
+    recoil: "LOW",
+    control: 94,
+    stability: 94,
+    close: 47,
+    camera: 104,
+    ads: 84,
+    gyro: 248,
+
+    scopes: {
+      "Red Dot": 34,
+      "2x": 29,
+      "3x": 23,
+      "4x": 18,
+      "6x": 12,
+      "8x": 8
+    },
+
+    muzzle: "Suppressor",
+    grip: "None",
+    mag: "Extended"
+  }
 
 ];
 
-let currentFilter="ALL";
-let currentWeapon=null;
 
-const grid=document.getElementById("weaponGrid");
-const search=document.getElementById("search");
+/* ELEMENTLER */
 
-function recoilClass(recoil){
-  return recoil.toLowerCase();
+const grid = document.getElementById("weaponGrid");
+const searchInput = document.getElementById("search");
+const weaponCount = document.getElementById("weaponCount");
+const bestWeapon = document.getElementById("bestWeapon");
+const lowestRecoil = document.getElementById("lowestRecoil");
+
+const modal = document.getElementById("modal");
+const closeModalButton = document.getElementById("closeModal");
+
+const modalTitle = document.getElementById("modalTitle");
+
+const mCamera = document.getElementById("mCamera");
+const mAds = document.getElementById("mAds");
+const mGyro = document.getElementById("mGyro");
+
+const scopeGrid = document.getElementById("scopeGrid");
+const modalScores = document.getElementById("modalScores");
+
+const mMuzzle = document.getElementById("mMuzzle");
+const mGrip = document.getElementById("mGrip");
+const mMag = document.getElementById("mMag");
+
+const saveButton = document.getElementById("saveBtn");
+const resetButton = document.getElementById("resetBtn");
+const toast = document.getElementById("toast");
+
+let currentFilter = "ALL";
+let currentWeapon = null;
+
+
+/* GÜVENLİ SAYI */
+
+function safeNumber(value){
+
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return 0;
+  }
+
+  return Math.max(0,Math.min(100,number));
 }
 
+
+/* RECOIL CLASS */
+
+function recoilClass(recoil){
+
+  if(recoil === "LOW"){
+    return "low";
+  }
+
+  if(recoil === "HIGH"){
+    return "high";
+  }
+
+  return "medium";
+}
+
+
+/* SCORE HTML */
+
 function scoreHTML(label,value){
+
+  const safe = safeNumber(value);
+
   return `
     <div class="score-line">
+
       <span>${label}</span>
-      <div class="bar"><i style="width:${value}%"></i></div>
-      <span class="score-value">${value}</span>
+
+      <div class="bar">
+        <i style="width:${safe}%"></i>
+      </div>
+
+      <span class="score-value">
+        ${safe}
+      </span>
+
     </div>
   `;
 }
 
-function render(){
 
-  const query=search.value.toLowerCase().trim();
+/* MODAL SCORE */
 
-  const filtered=weapons.filter(w=>{
+function modalScoreHTML(label,value){
 
-    const matchesSearch=
-      w.name.toLowerCase().includes(query) ||
-      w.category.toLowerCase().includes(query) ||
-      w.ammo.toLowerCase().includes(query);
+  const safe = safeNumber(value);
 
-    const matchesFilter=
-      currentFilter==="ALL" ||
-      w.category===currentFilter;
+  return `
+    <div class="modal-score">
+
+      <div class="modal-score-head">
+        <span>${label}</span>
+        <strong>${safe}/100</strong>
+      </div>
+
+      <div class="bar">
+        <i style="width:${safe}%"></i>
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* KART OLUŞTUR */
+
+function createCard(weapon,index){
+
+  return `
+    <article class="card">
+
+      <div class="card-top">
+
+        <div>
+
+          <div class="weapon-name">
+            ${weapon.name}
+          </div>
+
+          <div class="weapon-meta">
+            ${weapon.category} • ${weapon.ammo}
+          </div>
+
+        </div>
+
+        <div class="badge ${recoilClass(weapon.recoil)}">
+          ${weapon.recoil} RECOIL
+        </div>
+
+      </div>
+
+
+      <div class="scores">
+
+        ${scoreHTML("Kontrol",weapon.control)}
+
+        ${scoreHTML("Stabilite",weapon.stability)}
+
+        ${scoreHTML("Yakın",weapon.close)}
+
+      </div>
+
+
+      <div class="sensitivity">
+
+        <div class="sens">
+
+          <small>CAMERA</small>
+
+          <strong>
+            ${weapon.camera}%
+          </strong>
+
+        </div>
+
+
+        <div class="sens">
+
+          <small>ADS</small>
+
+          <strong>
+            ${weapon.ads}%
+          </strong>
+
+        </div>
+
+
+        <div class="sens">
+
+          <small>GYRO</small>
+
+          <strong>
+            ${weapon.gyro}%
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="open-btn"
+        type="button"
+        data-index="${index}"
+      >
+        AYARLARI GÖR →
+      </button>
+
+    </article>
+  `;
+}
+
+
+/* LİSTELE */
+
+function renderWeapons(){
+
+  if(!Array.isArray(weapons)){
+    grid.innerHTML = `
+      <div class="empty">
+        Silah verileri yüklenemedi.
+      </div>
+    `;
+    return;
+  }
+
+
+  const query = searchInput.value
+    .trim()
+    .toLowerCase();
+
+
+  const filtered = weapons.filter(function(weapon){
+
+    const matchesSearch =
+      weapon.name.toLowerCase().includes(query) ||
+      weapon.category.toLowerCase().includes(query) ||
+      weapon.ammo.toLowerCase().includes(query);
+
+
+    const matchesFilter =
+      currentFilter === "ALL" ||
+      weapon.category === currentFilter;
+
 
     return matchesSearch && matchesFilter;
+
   });
 
-  document.getElementById("weaponCount").textContent=filtered.length;
 
-  if(!filtered.length){
+  weaponCount.textContent = filtered.length;
 
-    grid.innerHTML=`
+
+  if(filtered.length === 0){
+
+    grid.innerHTML = `
       <div class="empty">
-        🔎<br><br>
-        <strong>Silah bulunamadı.</strong><br>
-        <small>Arama kelimesini veya filtreyi değiştir.</small>
+
+        <div style="font-size:30px">
+          🔎
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>Silah bulunamadı.</strong>
+        </div>
+
+        <div style="margin-top:6px">
+          Arama kelimesini veya filtreyi değiştir.
+        </div>
+
       </div>
     `;
 
     return;
   }
 
-  grid.innerHTML=filtered.map((w,index)=>`
 
-    <article class="card">
+  grid.innerHTML = filtered.map(function(weapon){
 
-      <div class="card-top">
+    const index = weapons.indexOf(weapon);
 
-        <div>
-          <div class="weapon-name">${w.name}</div>
-          <div class="weapon-meta">${w.category} • ${w.ammo}</div>
-        </div>
+    return createCard(weapon,index);
 
-        <div class="badge ${recoilClass(w.recoil)}">
-          ${w.recoil} RECOIL
-        </div>
+  }).join("");
 
-      </div>
 
-      <div class="scores">
-        ${scoreHTML("Kontrol",w.control)}
-        ${scoreHTML("Stabilite",w.stability)}
-        ${scoreHTML("Yakın",w.close)}
-      </div>
+  updateGlobalStats();
 
-      <div class="sensitivity">
-
-        <div class="sens">
-          <small>CAMERA</small>
-          <strong>${w.camera}%</strong>
-        </div>
-
-        <div class="sens">
-          <small>ADS</small>
-          <strong>${w.ads}%</strong>
-        </div>
-
-        <div class="sens">
-          <small>GYRO</small>
-          <strong>${w.gyro}%</strong>
-        </div>
-
-      </div>
-
-      <button class="open-btn" onclick="openWeapon(${weapons.indexOf(w)})">
-        AYARLARI GÖR →
-      </button>
-
-    </article>
-
-  `).join("");
-
-  const best=[...weapons].sort((a,b)=>b.stability-a.stability)[0];
-
-  const low=[...weapons]
-    .sort((a,b)=>b.control-a.control)[0];
-
-  document.getElementById("bestWeapon").textContent=best.name;
-  document.getElementById("lowestRecoil").textContent=low.name;
 }
+
+
+/* GLOBAL İSTATİSTİKLER */
+
+function updateGlobalStats(){
+
+  if(!weapons.length){
+    bestWeapon.textContent = "-";
+    lowestRecoil.textContent = "-";
+    return;
+  }
+
+
+  const mostStable = [...weapons]
+    .sort(function(a,b){
+      return b.stability - a.stability;
+    })[0];
+
+
+  const bestControl = [...weapons]
+    .sort(function(a,b){
+      return b.control - a.control;
+    })[0];
+
+
+  bestWeapon.textContent =
+    mostStable ? mostStable.name : "-";
+
+
+  lowestRecoil.textContent =
+    bestControl ? bestControl.name : "-";
+}
+
+
+/* MODAL AÇ */
 
 function openWeapon(index){
 
-  currentWeapon=weapons[index];
+  const weapon = weapons[index];
 
-  const w=currentWeapon;
+  if(!weapon){
+    return;
+  }
 
-  document.getElementById("modalTitle").textContent=w.name;
 
-  document.getElementById("mCamera").textContent=w.camera+"%";
-  document.getElementById("mAds").textContent=w.ads+"%";
-  document.getElementById("mGyro").textContent=w.gyro+"%";
+  currentWeapon = weapon;
 
-  document.getElementById("mMuzzle").textContent=w.muzzle;
-  document.getElementById("mGrip").textContent=w.grip;
-  document.getElementById("mMag").textContent=w.mag;
 
-  document.getElementById("scopeGrid").innerHTML=
-    Object.entries(w.scopes).map(([name,value])=>`
-      <div class="scope">
-        <small>${name}</small>
-        <strong>${value}%</strong>
-      </div>
-    `).join("");
+  modalTitle.textContent =
+    weapon.name;
 
-  document.getElementById("modalScores").innerHTML=`
-    ${scoreHTML("Kontrol",w.control)}
-    ${scoreHTML("Stabilite",w.stability)}
-    ${scoreHTML("Yakın Mesafe",w.close)}
-  `;
 
-  document.getElementById("modal").classList.add("show");
+  mCamera.textContent =
+    weapon.camera + "%";
 
-  document.body.style.overflow="hidden";
+
+  mAds.textContent =
+    weapon.ads + "%";
+
+
+  mGyro.textContent =
+    weapon.gyro + "%";
+
+
+  mMuzzle.textContent =
+    weapon.muzzle;
+
+
+  mGrip.textContent =
+    weapon.grip;
+
+
+  mMag.textContent =
+    weapon.mag;
+
+
+  scopeGrid.innerHTML =
+    Object.entries(weapon.scopes)
+    .map(function(entry){
+
+      const name = entry[0];
+      const value = entry[1];
+
+      return `
+        <div class="scope">
+
+          <small>
+            ${name}
+          </small>
+
+          <strong>
+            ${value}%
+          </strong>
+
+        </div>
+      `;
+
+    })
+    .join("");
+
+
+  modalScores.innerHTML =
+
+    modalScoreHTML(
+      "Recoil Kontrolü",
+      weapon.control
+    )
+
+    +
+
+    modalScoreHTML(
+      "Stabilite",
+      weapon.stability
+    )
+
+    +
+
+    modalScoreHTML(
+      "Yakın Mesafe",
+      weapon.close
+    );
+
+
+  document
+    .querySelectorAll(".profile")
+    .forEach(function(button){
+
+      button.classList.remove("active");
+
+    });
+
+
+  const stableButton =
+    document.querySelector(
+      '[data-profile="STABLE"]'
+    );
+
+
+  if(stableButton){
+    stableButton.classList.add("active");
+  }
+
+
+  modal.classList.add("show");
+
+  modal.setAttribute("aria-hidden","false");
+
+  document.body.style.overflow = "hidden";
 }
+
+
+/* MODAL KAPAT */
 
 function closeModal(){
 
-  document.getElementById("modal").classList.remove("show");
-  document.body.style.overflow="";
+  modal.classList.remove("show");
+
+  modal.setAttribute("aria-hidden","true");
+
+  document.body.style.overflow = "";
+
+  currentWeapon = null;
 }
 
-document.getElementById("closeModal")
-.addEventListener("click",closeModal);
 
-document.getElementById("modal")
-.addEventListener("click",e=>{
-  if(e.target.id==="modal") closeModal();
-});
+/* TOAST */
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape") closeModal();
-});
+function showToast(message){
 
-search.addEventListener("input",render);
+  toast.textContent = message;
 
-document.querySelectorAll(".filter").forEach(btn=>{
+  toast.classList.add("show");
 
-  btn.addEventListener("click",()=>{
 
-    document.querySelectorAll(".filter")
-      .forEach(x=>x.classList.remove("active"));
+  setTimeout(function(){
 
-    btn.classList.add("active");
+    toast.classList.remove("show");
 
-    currentFilter=btn.dataset.filter;
+  },1800);
+}
 
-    render();
+
+/* FİLTRELER */
+
+document
+  .querySelectorAll(".filter")
+  .forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+      document
+        .querySelectorAll(".filter")
+        .forEach(function(item){
+
+          item.classList.remove("active");
+
+        });
+
+
+      button.classList.add("active");
+
+
+      currentFilter =
+        button.dataset.filter;
+
+
+      renderWeapons();
+
+    });
 
   });
 
-});
+
+/* ARAMA */
+
+searchInput.addEventListener(
+  "input",
+  renderWeapons
+);
+
+
+/* KART BUTONLARI */
+
+grid.addEventListener(
+  "click",
+  function(event){
+
+    const button =
+      event.target.closest(".open-btn");
+
+
+    if(!button){
+      return;
+    }
+
+
+    const index =
+      Number(button.dataset.index);
+
+
+    openWeapon(index);
+
+  }
+);
+
+
+/* MODAL KAPATMA */
+
+closeModalButton.addEventListener(
+  "click",
+  closeModal
+);
+
+
+modal.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === modal){
+      closeModal();
+    }
+
+  }
+);
+
+
+/* ESC */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+      closeModal();
+    }
+
+  }
+);
+
 
 /* PROFİLLER */
 
-document.querySelectorAll(".profile").forEach(btn=>{
+document
+  .querySelectorAll(".profile")
+  .forEach(function(button){
 
-  btn.addEventListener("click",()=>{
+    button.addEventListener(
+      "click",
+      function(){
 
-    document.querySelectorAll(".profile")
-      .forEach(x=>x.classList.remove("active"));
+        if(!currentWeapon){
+          return;
+        }
 
-    btn.classList.add("active");
 
-    if(!currentWeapon) return;
+        document
+          .querySelectorAll(".profile")
+          .forEach(function(item){
 
-    const profile=btn.dataset.profile;
+            item.classList.remove("active");
 
-    let multiplier=1;
+          });
 
-    if(profile==="PRO") multiplier=1;
-    if(profile==="STABLE") multiplier=.96;
-    if(profile==="AGGRESSIVE") multiplier=1.08;
-    if(profile==="LONG") multiplier=.90;
 
-    document.getElementById("mCamera").textContent=
-      Math.round(currentWeapon.camera*multiplier)+"%";
+        button.classList.add("active");
 
-    document.getElementById("mAds").textContent=
-      Math.round(currentWeapon.ads*multiplier)+"%";
 
-    document.getElementById("mGyro").textContent=
-      Math.round(currentWeapon.gyro*multiplier)+"%";
+        const profile =
+          button.dataset.profile;
+
+
+        let multiplier = 1;
+
+
+        if(profile === "PRO"){
+          multiplier = 1;
+        }
+
+
+        if(profile === "STABLE"){
+          multiplier = .96;
+        }
+
+
+        if(profile === "AGGRESSIVE"){
+          multiplier = 1.08;
+        }
+
+
+        if(profile === "LONG"){
+          multiplier = .90;
+        }
+
+
+        mCamera.textContent =
+          Math.round(
+            currentWeapon.camera * multiplier
+          ) + "%";
+
+
+        mAds.textContent =
+          Math.round(
+            currentWeapon.ads * multiplier
+          ) + "%";
+
+
+        mGyro.textContent =
+          Math.round(
+            currentWeapon.gyro * multiplier
+          ) + "%";
+
+
+        showToast(
+          profile + " profili uygulandı."
+        );
+
+      }
+    );
 
   });
 
-});
 
-/* SAVE */
+/* KAYDET */
 
-document.getElementById("saveBtn").addEventListener("click",()=>{
+saveButton.addEventListener(
+  "click",
+  function(){
 
-  if(!currentWeapon) return;
+    if(!currentWeapon){
+      return;
+    }
 
-  localStorage.setItem(
-    "aimverse_last_weapon",
-    currentWeapon.name
-  );
 
-  const btn=document.getElementById("saveBtn");
+    const data = {
 
-  btn.textContent="✓ Kaydedildi";
+      weapon: currentWeapon.name,
 
-  setTimeout(()=>{
-    btn.textContent="💾 Ayarı Kaydet";
-  },1600);
+      camera: mCamera.textContent,
 
-});
+      ads: mAds.textContent,
 
-/* RESET */
+      gyro: mGyro.textContent,
 
-document.getElementById("resetBtn").addEventListener("click",()=>{
+      savedAt: Date.now()
 
-  if(!currentWeapon) return;
+    };
 
-  document.getElementById("mCamera").textContent=
-    currentWeapon.camera+"%";
 
-  document.getElementById("mAds").textContent=
-    currentWeapon.ads+"%";
+    localStorage.setItem(
+      "aimverse_weapon_settings",
+      JSON.stringify(data)
+    );
 
-  document.getElementById("mGyro").textContent=
-    currentWeapon.gyro+"%";
 
-  document.querySelectorAll(".profile")
-    .forEach(x=>x.classList.remove("active"));
+    showToast(
+      currentWeapon.name +
+      " ayarları kaydedildi."
+    );
 
-  document.querySelector('[data-profile="STABLE"]')
-    .classList.add("active");
+  }
+);
 
-});
 
-/* START */
+/* SIFIRLA */
 
-render();
+resetButton.addEventListener(
+  "click",
+  function(){
+
+    if(!currentWeapon){
+      return;
+    }
+
+
+    mCamera.textContent =
+      currentWeapon.camera + "%";
+
+
+    mAds.textContent =
+      currentWeapon.ads + "%";
+
+
+    mGyro.textContent =
+      currentWeapon.gyro + "%";
+
+
+    document
+      .querySelectorAll(".profile")
+      .forEach(function(item){
+
+        item.classList.remove("active");
+
+      });
+
+
+    const stable =
+      document.querySelector(
+        '[data-profile="STABLE"]'
+      );
+
+
+    if(stable){
+      stable.classList.add("active");
+    }
+
+
+    showToast(
+      "Ayarlar sıfırlandı."
+    );
+
+  }
+);
+
+
+/* SAYFA BAŞLANGICI */
+
+function init(){
+
+  renderWeapons();
+
+}
+
+
+/* BAŞLAT */
+
+init();
 
 </script>
 
 </body>
-</html>
-
+  </html>
